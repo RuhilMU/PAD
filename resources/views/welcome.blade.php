@@ -32,7 +32,7 @@
                 <div class="p-6 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
                     <h1
                         class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                        Masuk ke Web Pengelolaan Keuangan
+                        
                     </h1>
                     <form class="space-y-4 md:space-y-6" action="#">
                         <div>
