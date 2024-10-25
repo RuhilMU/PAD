@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('layout.admin');
 });
 
 Route::get('/email', function () {
