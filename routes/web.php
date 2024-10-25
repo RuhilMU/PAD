@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
+Route::get('/email', function () {
+    return view('auth.email');
+});
 
-Route::get('/forgot-password', function () {
+Route::get('/reset-password', function () {
     return view('auth.reset');
 });
 
