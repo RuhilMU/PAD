@@ -4,11 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
-    return view('layout.admin');
+    return view('manajemen.pegawai');
 });
 
 Route::get('/home', function () {
     return view('home.home');
+});
+
+Route::get('/barang', function () {
+    return view('barang.barang');
+});
+
+Route::get('/pegawai', function () {
+    return view('manajemen.pegawai');
 });
 
 Route::get('/email', function () {

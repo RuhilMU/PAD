@@ -1,6 +1,9 @@
 body section{
     background: #F4F1E6;
 }
+body section div {
+    background: white;
+}
 body section div div{
     background: #B0C4DE;
 }
