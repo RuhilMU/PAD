@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('layout.admin');
 });
 
+Route::get('/home', function () {
+    return view('home.home');
+});
+
 Route::get('/email', function () {
     return view('auth.email');
 });
