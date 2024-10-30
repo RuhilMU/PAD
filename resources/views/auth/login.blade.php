@@ -1,24 +1,6 @@
-<!doctype html>
-<html>
+@extends('layout.auth')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
-    @vite('resources/css/app.css')
-</head>
-
-
-<nav>
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="src/Logo.png" class="h-8" alt="Flowbite Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Web Pengelola Keuangan</span>
-        </a>
-
-    </div>
-</nav>
+@section('content')
 
 <body>
     <section>
@@ -32,7 +14,7 @@
                 <div class="p-6 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
                     <h1
                         class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                        
+                        Masuk ke Web Pengelolaan Keuangan
                     </h1>
                     <form class="space-y-4 md:space-y-6" action="#">
                         <div>
@@ -47,17 +29,10 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
-                                <div class="flex items-center h-5">
-                                    <input id="remember" aria-describedby="remember" type="checkbox"
-                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                        required="">
-                                </div>
-                                <div class="ml-3 text-sm">
-                                    <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
-                                </div>
+
                             </div>
                             <a href="#"
-                                class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot
+                                class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Lupa
                                 password?</a>
                         </div>
                         <button type="submit"
@@ -69,15 +44,4 @@
         </div>
     </section>
 </body>
-
-
-
-<footer>
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <span class="block text-sm sm:text-center">© 2023 <a
-                href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
-    </div>
-</footer>
-
-
-</html>
+@endsection
