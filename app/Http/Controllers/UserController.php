@@ -31,10 +31,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:5',
+        ]);
+        
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = $request->password;
+            $user->role = 'pegawai';
             $user->save();
 
             return redirect('/pegawai');

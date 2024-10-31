@@ -52,6 +52,8 @@
 
 <body>
     <section class="p-9">
+    <a href="{{ route('create')}}" style=" display:inline; margin-top: 10px; margin-bottom:10px ; float: right;margin-right:10px;">Tambah Akun</a>
+        
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div class="pb-4 bg-white dark:bg-gray-900">
                 <label for="table-search" class="sr-only">Search</label>

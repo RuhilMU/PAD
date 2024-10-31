@@ -7,12 +7,12 @@
 </head>
 <body>
 
-        <h4>Tambah User</h4>
+        <h4>Tambah Akun</h4>
         <form method="post" action="{{ route('store') }}">
             @csrf
 
-                <label for="nama">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama">
+                <label for="name">Nama</label>
+                <input type="text" class="form-control" id="name" name="name">
 
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
