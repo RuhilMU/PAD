@@ -12,7 +12,7 @@
 
 <nav class="max-w-screen-2xl flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
-        <a href="/home" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
+        <a href="/dashboard" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
             <img src="img/lucide--home.svg" class="h-10" alt="Flowbite Logo" />
         </a>
     </div>
