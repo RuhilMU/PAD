@@ -12,7 +12,7 @@
 
 <nav class="max-w-screen-2xl flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
-        <a href="/home" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
+        <a href="/dashboard" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
             <img src="img/lucide--home.svg" class="h-10" alt="Flowbite Logo" />
         </a>
     </div>
@@ -34,7 +34,7 @@
         <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                 <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    <a href="/dashboard" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                 </li>
                 <li>
                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
@@ -68,6 +68,9 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
+                            No
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Nama
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -82,24 +85,55 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($data_user as $index => $user)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
+                            {{ $index+1 }}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $user->name }}
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                            {{ $user->email }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ $user->password }}
                         </td>
+                        
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <form action="{{ route('edit', $user->user_id) }}" method="GET" onsubmit="return confirmUpdate();">
+                            @csrf
+                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                        </form>
+                        <form action="{{ route('destroy', $user->user_id) }}" method="POST" onsubmit="return confirmDelete();">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                        </form>
                         </td>
+
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </section>
+    <script>
+    function confirmDelete() {
+        const confirmed = confirm('Delete this user?');
+        if (!confirmed) return false;
+        
+        console.log('Delete confirmed. Submitting form.');
+        return true;
+    }
+    function confirmUpdate() {
+        const confirmed = confirm('Update this user?');
+        if (!confirmed) return false;
+        
+        console.log('Update confirmed. Submitting form.');
+        return true;
+    }
+</script>
 </body>
 
 </html>
