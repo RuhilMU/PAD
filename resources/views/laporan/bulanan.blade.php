@@ -1,15 +1,13 @@
-@extends('layout.admin')
+@extends('layout.laporan')
+@section('title laporan', 'LAPORAN KEUANGAN BULANAN')
+@section('dropdown', 'Bulanan')
 
 @section('content')
+    <section class="bg-[#F4F1E6] p-20">
+        <div class="mx-auto"><canvas id="acquisitions"></canvas></div>
+    </section>
 
-<body>
-    <div class="grid grid-cols-3 mt-4">
-        <div style="width: 500px;" class="bg-white"><canvas id="acquisitions"></canvas></div>
-        <div style="width: 500px;" class="bg-white"><canvas id="acquisitions"></canvas></div>
-        <div style="width: 500px;" class="bg-white"><canvas id="acquisitions"></canvas></div>
-    </div>
-    <div style="width: 600px;" class="bg-white mx-auto mt-4"><canvas id="acquisitions"></canvas></div>
-</body>
+
 <script>
     const data = [{
             day: 1,
@@ -84,4 +82,5 @@
         });
     });
 </script>
+
 @endsection

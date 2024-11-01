@@ -40,7 +40,7 @@
     </div>
 </nav>
 
-<body>
+<body class="bg-[#F4F1E6]">
     @yield('content')
 </body>
 

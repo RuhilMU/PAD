@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('manajemen.pegawai');
+    return view('laporan.riwayat');
 });
 
 Route::get('/dashboard', function () {
