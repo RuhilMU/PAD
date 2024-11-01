@@ -8,8 +8,24 @@ Route::get('/', function () {
     return view('laporan.riwayat');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/home', function () {
     return view('home.home');
+});
+
+Route::get('/harian', function () {
+    return view('laporan.harian');
+});
+
+Route::get('/mingguan', function () {
+    return view('laporan.mingguan');
+});
+
+Route::get('/bulanan', function () {
+    return view('laporan.bulanan');
+});
+
+Route::get('/riwayat', function () {
+    return view('laporan.riwayat');
 });
 
 Route::get('/barang', function () {
