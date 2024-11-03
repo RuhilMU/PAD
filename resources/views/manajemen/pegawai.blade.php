@@ -30,11 +30,11 @@
 
 <body class="bg-[#F4F1E6]">
     <section class="p-9">
-    <a href="{{ route('create')}}" style=" display:inline; margin-top: 10px; margin-bottom:10px ; float: right;margin-right:10px;">Tambah Akun</a>        
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div class="pb-4 bg-white dark:bg-gray-900">
+                <a href="{{ route('create')}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style=" display:inline; margin-top: 10px; margin-bottom:10px ; float: left;margin-left:10px;">Tambah Akun</a>
                 <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1 bg-white">
+                <div class="relative mt-1 bg-white" style=" display:inline; margin-top: 10px; margin-bottom:10px ; float: right;margin-right:10px;">
                     <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs text-white uppercase bg-[#324150] dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             No
@@ -76,19 +76,19 @@
                             {{ $user->email }}
                         </td>
                         <td class="px-6 py-4">
-                        *****
+                            *****
                         </td>
-                        
+
                         <td class="px-6 py-4">
                             <form action="{{ route('edit', $user->user_id) }}" method="GET" onsubmit="return confirmUpdate();">
-                            @csrf
-                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
-                        </form>
-                        <form action="{{ route('destroy', $user->user_id) }}" method="POST" onsubmit="return confirmDelete();">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
-                        </form>
+                                @csrf
+                                <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                            </form>
+                            <form action="{{ route('destroy', $user->user_id) }}" method="POST" onsubmit="return confirmDelete();">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                            </form>
                         </td>
 
                     </tr>
@@ -98,21 +98,22 @@
         </div>
     </section>
     <script>
-    function confirmDelete() {
-        const confirmed = confirm('Delete this user?');
-        if (!confirmed) return false;
-        
-        console.log('Delete confirmed. Submitting form.');
-        return true;
-    }
-    function confirmUpdate() {
-        const confirmed = confirm('Update this user?');
-        if (!confirmed) return false;
-        
-        console.log('Update confirmed. Submitting form.');
-        return true;
-    }
-</script>
+        function confirmDelete() {
+            const confirmed = confirm('Delete this user?');
+            if (!confirmed) return false;
+
+            console.log('Delete confirmed. Submitting form.');
+            return true;
+        }
+
+        function confirmUpdate() {
+            const confirmed = confirm('Update this user?');
+            if (!confirmed) return false;
+
+            console.log('Update confirmed. Submitting form.');
+            return true;
+        }
+    </script>
 </body>
 
 </html>

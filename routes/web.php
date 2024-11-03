@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('laporan.riwayat');
 });
 
-Route::get('/home', function () {
+Route::get('/dashboard', function () {
     return view('home.home');
 });
 
