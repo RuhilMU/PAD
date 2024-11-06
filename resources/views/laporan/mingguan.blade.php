@@ -1,6 +1,9 @@
 @extends('layout.laporan')
 @section('title laporan', 'LAPORAN KEUANGAN MINGGUAN')
 @section('dropdown', 'Mingguan')
+<head>
+    <title>Mingguan</title>
+</head>
 
 @section('content')
     <section class="bg-[#F4F1E6] p-20">
