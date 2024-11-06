@@ -1,6 +1,9 @@
 @extends('layout.admin')
 
 @section('content')
+<head>
+    <title>Home</title>
+</head>
 
 <body>
     <div class="grid grid-cols-3 mt-4">

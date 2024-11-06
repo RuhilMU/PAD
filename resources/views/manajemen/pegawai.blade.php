@@ -9,7 +9,6 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-
 <nav class="max-w-screen-2xl flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
         <a href="/dashboard" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">

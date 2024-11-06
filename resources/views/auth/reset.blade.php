@@ -1,6 +1,9 @@
 @extends('layout.auth')
 
 @section('content')
+<head>
+    <title>Reset Password</title>
+</head>
 
 <body>
     <section>
