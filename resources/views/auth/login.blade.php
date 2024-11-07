@@ -8,17 +8,16 @@
 
 <body>
     <section>
-        <div class="bg-[#F4F1E6] flex flex-row items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="flex flex-row items-center justify-center px-6 py-8 mx-auto md:h-screen">
             <a href="#" class="flex flex-col items-center mr-60 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-40 h-40 mr-2 mb-6" src="src/Logo.png"
                     alt="logo">
                 <span class="font-bold">Web Pengelola Keuangan</span>
             </a>
-            <div
-                class="bg-[#B0C4DE] w-full rounded-full shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                <div class="p-6 rounded-3xl space-y-4 md:space-y-6 sm:p-8">
+            <div class="w-full rounded-full shadow md:mt-0 sm:max-w-md xl:p-0 ">
+                <div class="p-6 rounded-3xl space-y-4 md:space-y-6 sm:p-8 shadow-lg" style="background-color:rgb(255, 255, 255)">
                     <h1
-                        class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        class="text-center font-bold md:text-2xl">
                         Login
                     </h1>
                     <form class="space-y-4 md:space-y-6" action="{{ route('login') }}" method="POST">
