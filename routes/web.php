@@ -39,19 +39,19 @@ Route::get('/barang', function () {
 // });
 
 Route::get('/pegawai', [UserController::class, 'index']);
-Route::get('/pegawai/create', [UserController::class, 'create'])->name('create');
-Route::post('/pegawai', [UserController::class, 'store'])->name('store');
-Route::delete('/pegawai/{user_id}', [UserController::class, 'destroy'])->name('destroy');
-Route::get('/pegawai/edit/{user_id}', [UserController::class, 'edit'])->name('edit');
-Route::post('/pegawai/update/{user_id}', [UserController::class, 'update'])->name('update');
-Route::get('/pegawai/search', [UserController::class, 'search'])->name('search');
+Route::get('/pegawai/create', [UserController::class, 'create'])->name('pegawai.create');
+Route::post('/pegawai', [UserController::class, 'store'])->name('pegawai.store');
+Route::delete('/pegawai/{user_id}', [UserController::class, 'destroy'])->name('pegawai.destroy');
+Route::get('/pegawai/edit/{user_id}', [UserController::class, 'edit'])->name('pegawai.edit');
+Route::post('/pegawai/update/{user_id}', [UserController::class, 'update'])->name('pegawai.update');
+Route::get('/pegawai/search', [UserController::class, 'search'])->name('pegawai.search');
 
 Route::get('/barang', [ExpenseController::class, 'index']);
-Route::get('/barang/create', [ExpenseController::class, 'create'])->name('create');
-Route::post('/barang', [ExpenseController::class, 'store'])->name('store');
-Route::delete('/barang/{expense_id}', [ExpenseController::class, 'destroy'])->name('destroy');
-Route::get('/barang/edit/{expense_id}', [ExpenseController::class, 'edit'])->name('edit');
-Route::post('/barang/update/{expense_id}', [ExpenseController::class, 'update'])->name('update');
+Route::get('/barang/create', [ExpenseController::class, 'create'])->name('barang.create');
+Route::post('/barang', [ExpenseController::class, 'store'])->name('barang.store');
+Route::delete('/barang/{expense_id}', [ExpenseController::class, 'destroy'])->name('barang.destroy');
+Route::get('/barang/edit/{expense_id}', [ExpenseController::class, 'edit'])->name('barang.edit');
+Route::post('/barang/update/{expense_id}', [ExpenseController::class, 'update'])->name('barang.update');
 
 Route::get('/laporan', [ConsignmentController::class, 'laporanIndex'])->name('laporan.index');
 Route::post('/laporan', [ConsignmentController::class, 'laporanStore'])->name('laporan.store');
@@ -59,9 +59,8 @@ Route::put('/laporan/{consignment}', [ConsignmentController::class, 'laporanUpda
 Route::delete('/laporan/{consignment}', [ConsignmentController::class, 'laporanDestroy'])->name('laporan.destroy');
 
 Route::get('/dashboard', [ConsignmentController::class, 'mainpageIndex'])->name('mainpage.index');
-Route::post('/dashboard', [ConsignmentController::class, 'mainpageStore'])->name('mainpage.store');
-Route::put('/mainpage/{consignment}', [ConsignmentController::class, 'mainpageUpdate'])->name('mainpage.update');
-Route::delete('/mainpage/{consignment}', [ConsignmentController::class, 'mainpageDestroy'])->name('mainpage.destroy');
+Route::get('/dashboard/search', [ConsignmentController::class, 'mainpageSearch'])->name('mainpage.search');
+
 
 // Route::get('/email', function () {
 //     return view('auth.email');

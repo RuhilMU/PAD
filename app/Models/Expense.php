@@ -16,6 +16,9 @@ class Expense extends Model
         'amount',
         'date',
     ];
+        protected $dates = [
+        'date',
+    ];
 
     public function user()
     {

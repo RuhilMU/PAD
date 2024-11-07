@@ -6,7 +6,7 @@
     <title>Edit User</title>
 </head>
 <body>
-    <form method="post" action="{{ route('update', $user->user_id) }}">
+    <form method="post" action="{{ route('pegawai.update', $user->user_id) }}">
         @csrf
             <label for="name">Nama</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">

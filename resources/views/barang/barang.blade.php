@@ -32,6 +32,7 @@
 <body class="bg-[#F4F1E6]">
     <section class="p-9">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <a href="{{ route('barang.create')}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" style=" display:inline; margin-top: 10px; margin-bottom:10px ; float: left;margin-left:10px;">Tambah</a>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-white uppercase bg-[#324150]">
                     <tr>
@@ -50,24 +51,28 @@
                     </tr>
                 </thead>
                 <tbody>
+                @foreach ($data_keluar as $expense)
                     <tr class="bg-white border-b">
                         
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Apple MacBook Pro 17"
+                        {{ \Carbon\Carbon::parse($expense->date)->format('d-m-Y') }}
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                        {{ 'Rp ' . number_format($expense->amount, 2, ',', '.') }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                        {{ $expense->description }}
                         </td>
                         <td class="flex items-center px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                            <a href="#" class="font-medium text-red-600 hover:underline ms-3">Remove</a>
+                            <a href="{{ route('barang.edit', $expense->expense_id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <form action="{{ route('barang.destroy', $expense->expense_id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE') 
+                                <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3" style="border: none; background: none; cursor: pointer;">Remove</button>
+                            </form>
                         </td>
                     </tr>
-                    
-                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
