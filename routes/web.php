@@ -12,8 +12,8 @@ Route::get('/dashboard', function () {
     return view('home.home');
 });
 
-Route::get('/harian', function () {
-    return view('laporan.harian');
+Route::get('/transaksi', function () {
+    return view('laporan.transaksi');
 });
 
 Route::get('/mingguan', function () {

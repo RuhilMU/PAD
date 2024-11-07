@@ -1,8 +1,7 @@
 @extends('layout.laporan')
-@section('title laporan', 'LAPORAN KEUANGAN HARIAN')
-@section('dropdown', 'Harian')
+@section('title laporan', 'Transaksi')
 <head>
-    <title>Harian</title>
+    <title>Transaksi</title>
 </head>
 
 @section('content')
