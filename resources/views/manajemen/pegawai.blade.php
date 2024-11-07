@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="src/Logo.png">
+    <title>Manajemen Pegawai</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-
-<nav class="max-w-screen-2xl flex flex-row flex-wrap items-center justify-between p-2">
+<nav class="bg-gradient-to-r from-[#161D6F] to-[#4854EB] max-w-screen-2xl flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
         <a href="/dashboard" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
             <img src="img/lucide--home.svg" class="h-10" alt="Flowbite Logo" />

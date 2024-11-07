@@ -95,4 +95,12 @@ class UserController extends Controller
         $user->delete();
         return redirect('/pegawai');
     }
+
+    public function search(Request $request)
+    {
+        $cari = $request->name;
+        $data_user = User::where('name', 'like', "%" . $cari . "%")->orwhere('email', 'like', "%" . $cari . "%");
+        $jumlah_user = User::count();
+        return view('manajemen.cari', compact('data_user', 'cari', 'jumlah_user'));
+    }
 }

@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="src/Logo.png">
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
 
-<nav class="max-w-screen-2xl flex flex-row flex-wrap items-center justify-between p-2">
+<nav class="bg-gradient-to-r from-[#161D6F] to-[#4854EB] max-w-screen-2xl flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
         <a href="/dashboard" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
             <img src="img/lucide--home.svg" class="h-10" alt="Flowbite Logo" />
@@ -33,9 +34,6 @@
         <!-- Dropdown menu -->
         <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                <li>
-                    <a href="/harian" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Harian</a>
-                </li>
                 <li>
                     <a href="/mingguan" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mingguan</a>
                 </li>
