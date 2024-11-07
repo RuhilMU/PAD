@@ -21,7 +21,6 @@ return new class extends Migration
 
             $table->date('date');
             $table->integer('sold');
-            $table->decimal('price', 8, 2);
             $table->decimal('income', 8, 2);
             $table->timestamps();
         });
