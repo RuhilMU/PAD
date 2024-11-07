@@ -42,9 +42,6 @@
                     <th scope="col" class="px-6 py-3">
                         Jumlah
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -59,17 +56,6 @@
                         31
                     </td>
 
-                    <td class="px-6 py-4">
-                        <form method="GET" onsubmit="return confirmUpdate();">
-                            @csrf
-                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
-                        </form>
-                        <form method="POST" onsubmit="return confirmDelete();">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
-                        </form>
-                    </td>
 
                 </tr>
             </tbody>
