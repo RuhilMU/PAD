@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="src/Logo.png">
     @vite(['resources/css/app.css','resources/js/app.js'])
@@ -15,7 +14,7 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse mr-auto">
             <img src="src/Logo.png" class="h-8" alt="Flowbite Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Web Pengelola Keuangan</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap">Web Pengelola Keuangan</span>
         </a>
 
     </div>
