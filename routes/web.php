@@ -18,6 +18,14 @@ Route::get('/transaksi', function () {
     return view('laporan.transaksi');
 });
 
+Route::get('/tambah-transaksi', function () {
+    return view('transaksi.tambah');
+});
+
+Route::get('/edit-transaksi', function () {
+    return view('transaksi.edit');
+});
+
 Route::get('/mingguan', function () {
     return view('laporan.mingguan');
 });

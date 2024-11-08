@@ -7,76 +7,61 @@
 
 @section('content')
     <section class="bg-[#F4F1E6] p-20">
-        <div class="mx-auto"><canvas id="acquisitions"></canvas></div>
+        <div class="mx-auto"><canvas id="mingguan"></canvas></div>
     </section>
 
 
 <script>
-    const data = [{
-            day: 1,
+    const data_mingguan = [{
+            week: 1,
             masuk: 55,
             keluar: 50,
             min: 0,
             max: 100
         },
         {
-            day: 2,
+            week: 2,
             masuk: 10,
             keluar: 50
         },
         {
-            day: 3,
+            week: 3,
             masuk: 32,
             keluar: 50
         },
         {
-            day: 4,
+            week: 4,
             masuk: 40,
-            keluar: 50
-        },
-        {
-            day: 5,
-            masuk: 30,
-            keluar: 50
-        },
-        {
-            day: 6,
-            masuk: 21,
-            keluar: 50
-        },
-        {
-            day: 7,
-            masuk: 55,
             keluar: 50
         }
     ];
 
     document.addEventListener('DOMContentLoaded', () => {
-        new Chart(document.getElementById('acquisitions'), {
+        new Chart(document.getElementById('mingguan'), {
             type: 'line',
             data: {
-                labels: data.map(row => `Hari ${row.day}`),
+                labels: data_mingguan.map(row => `${row.week}`),
                 datasets: [{
                         label: 'Masuk',
-                        data: data.map(row => row.masuk),
+                        data: data_mingguan.map(row => row.masuk),
                         borderColor: '#20BB14',
                         fill: false
                     },
                     {
                         label: 'Keluar',
-                        data: data.map(row => row.keluar),
+                        data: data_mingguan.map(row => row.keluar),
                         borderColor: '#E21F03',
                         fill: false
                     },
                     {
                         label: 'Min',
-                        data: data.map(row => row.min),
+                        data: data_mingguan.map(row => row.min),
                         borderColor: 'white',
                         fill: false
                     },
                     {
                         label: 'Max',
-                        data: data.map(row => row.max),
+                        data: data_mingguan.map(row => row.max),
                         borderColor: 'white',
                         fill: false
                     }

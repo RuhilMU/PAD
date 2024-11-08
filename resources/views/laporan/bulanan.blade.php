@@ -7,76 +7,101 @@
 
 @section('content')
     <section class="bg-[#F4F1E6] p-20">
-        <div class="mx-auto"><canvas id="acquisitions"></canvas></div>
+        <div class="mx-auto"><canvas id="bulanan"></canvas></div>
     </section>
 
 
 <script>
-    const data = [{
-            day: 1,
+    const data_bulanan = [{
+            month: 1,
             masuk: 55,
             keluar: 50,
             min: 0,
             max: 100
         },
         {
-            day: 2,
+            month: 2,
             masuk: 10,
             keluar: 50
         },
         {
-            day: 3,
+            month: 3,
             masuk: 32,
             keluar: 50
         },
         {
-            day: 4,
+            month: 4,
             masuk: 40,
             keluar: 50
         },
         {
-            day: 5,
+            month: 5,
             masuk: 30,
             keluar: 50
         },
         {
-            day: 6,
+            month: 6,
             masuk: 21,
             keluar: 50
         },
         {
-            day: 7,
+            month: 8,
+            masuk: 55,
+            keluar: 50
+        },
+        {
+            month: 9,
+            masuk: 55,
+            keluar: 50
+        },
+        {
+            month: 10,
+            masuk: 55,
+            keluar: 50
+        },
+        {
+            month: 7,
+            masuk: 55,
+            keluar: 50
+        },
+        {
+            month: 11,
+            masuk: 55,
+            keluar: 50
+        },
+        {
+            month: 12,
             masuk: 55,
             keluar: 50
         }
     ];
 
     document.addEventListener('DOMContentLoaded', () => {
-        new Chart(document.getElementById('acquisitions'), {
+        new Chart(document.getElementById('bulanan'), {
             type: 'line',
             data: {
-                labels: data.map(row => `Hari ${row.day}`),
+                labels: data_bulanan.map(row => `${row.month}`),
                 datasets: [{
                         label: 'Masuk',
-                        data: data.map(row => row.masuk),
+                        data: data_bulanan.map(row => row.masuk),
                         borderColor: '#20BB14',
                         fill: false
                     },
                     {
                         label: 'Keluar',
-                        data: data.map(row => row.keluar),
+                        data: data_bulanan.map(row => row.keluar),
                         borderColor: '#E21F03',
                         fill: false
                     },
                     {
                         label: 'Min',
-                        data: data.map(row => row.min),
+                        data: data_bulanan.map(row => row.min),
                         borderColor: 'white',
                         fill: false
                     },
                     {
                         label: 'Max',
-                        data: data.map(row => row.max),
+                        data: data_bulanan.map(row => row.max),
                         borderColor: 'white',
                         fill: false
                     }
