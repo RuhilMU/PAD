@@ -9,7 +9,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-28 mt-10">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <div class="p-3">
-            <a href="/tambah-barang" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
+            <a href="{{ route('pegawai.create')}}" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
             <a href="/edit-barang" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Edit</a>
         </div>
         <div class="relative mr-5">
@@ -18,10 +18,11 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>
             </div>
-            <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-72 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
+            <form action="{{ route('pegawai.search') }}" method="GET">
+                <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-72 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
         </div>
     </div>
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-white uppercase bg-[#324150]">
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -43,11 +44,11 @@
         </thead>
         <tbody>
             @foreach($data_user as $index => $user)
-            <tr class="bg-white border-b hover:bg-gray-50">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $index+1 }}
                 </th>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $user->name }}
                 </th>
                 <td class="px-6 py-4">
@@ -58,17 +59,13 @@
                 </td>
 
                 <td class="px-6 py-4">
-                    <form action="{{ route('edit', $user->user_id) }}" method="GET" onsubmit="return confirmUpdate();">
-                        @csrf
-                        <button type="submit" class="font-medium text-blue-600 hover:underline">Edit</button>
-                    </form>
-                    <form action="{{ route('destroy', $user->user_id) }}" method="POST" onsubmit="return confirmDelete();">
+                    <a href="{{ route('pegawai.edit', $user->user_id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <form action="{{ route('pegawai.destroy', $user->user_id) }}" method="POST" onsubmit="return confirmDelete();">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="font-medium text-blue-600 hover:underline">Delete</button>
+                        <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
                     </form>
                 </td>
-
             </tr>
             @endforeach
         </tbody>

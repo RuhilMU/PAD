@@ -22,8 +22,11 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>
             </div>
-            <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-50 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
+            <form action="{{ route('mainpage.search') }}" method="GET">
+                <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-40 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
+            </form>
         </div>
+        <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-50 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
     </div>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-white uppercase bg-[#161D6F]">
@@ -40,19 +43,21 @@
             </tr>
         </thead>
 
-        {{-- Ini nanti isi pakai data dummy aja --}}
+        <!-- Ini nanti isi pakai data dummy aja -->
         <tbody>
+            @foreach ($consignments as $consignment)
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="px-6 py-4">
-                    asda
+                    {{ $consignment['store_name'] }}
                 </td>
                 <td class="px-6 py-4">
-                    asda
+                    {{ $consignment['product_name'] }}
                 </td>
                 <td class="px-6 py-4">
-                    31
+                    {{ $consignment['quantity'] }}
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
@@ -96,7 +101,7 @@
             keluar: 50
         }
     ];
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         new Chart(document.getElementById('harian'), {
             type: 'line',

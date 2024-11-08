@@ -15,7 +15,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('store_id');
             $table->foreign('store_id')->references('store_id')->on('stores');
-            $table->string('status')->default('open');
             $table->date('entry_date');
             $table->date('exit_date')->nullable();
             $table->integer('quantity');

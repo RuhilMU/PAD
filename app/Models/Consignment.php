@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Consignment extends Model
 {
@@ -14,19 +15,23 @@ class Consignment extends Model
         'product_id',
         'store_id',
         'quantity',
-        'status', 
         'entry_date', 
+        'exit_date',
+    ];
+
+    protected $dates = [
+        'entry_date',
         'exit_date',
     ];
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id', 'product_id');
     }
 
     public function store()
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Store::class, 'store_id', 'store_id');
     }
 
     public function getCirculationDurationAttribute()
@@ -36,9 +41,35 @@ class Consignment extends Model
             : null;
     }
 
+    public function getStatusAttribute()
+    {
+
+        if ($this->entry_date && $this->exit_date) {
+            $entry_date = Carbon::parse($this->entry_date);
+            $exit_date = Carbon::parse($this->exit_date);
+            
+            $diffInDays = $entry_date->diffInDays($exit_date);
+            
+            return $diffInDays >= 7 ? 'close' : 'open';
+    }
+}
+
     public function getTotalPriceAttribute()
     {
         return $this->quantity * $this->product->price;
     }
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::saving(function ($consignment) {
+    //         if ($consignment->entry_date && $consignment->exit_date) {
+    //             $diffInDays = $consignment->entry_date->diffInDays($consignment->exit_date);
+
+    //             $consignment->status = $diffInDays >= 7 ? 'close' : 'open';
+    //         }
+    //     });
+    // }
 }
 

@@ -98,9 +98,9 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-        $cari = $request->name;
-        $data_user = User::where('name', 'like', "%" . $cari . "%")->orwhere('email', 'like', "%" . $cari . "%");
+        $cari = $request->nama;
+        $data_user = User::where('name', 'like', "%" . $cari . "%")->orwhere('email', 'like', "%" . $cari . "%")->get();
         $jumlah_user = User::count();
-        return view('manajemen.cari', compact('data_user', 'cari', 'jumlah_user'));
+        return view('manajemen.pegawai', compact('data_user', 'cari', 'jumlah_user'));
     }
 }

@@ -27,9 +27,8 @@
 </nav>
 
 <body class="bg-[#F4F1E6]">
-
     <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
-        <form class="space-y-6" method="post" action="{{ route('store') }}">
+        <form class="space-y-6" method="post" action="{{ route('pegawai.store') }}">
             @csrf
 
             <label for="name">Nama</label>
