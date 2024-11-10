@@ -43,16 +43,9 @@ class Consignment extends Model
 
     public function getStatusAttribute()
     {
-
-        if ($this->entry_date && $this->exit_date) {
-            $entry_date = Carbon::parse($this->entry_date);
-            $exit_date = Carbon::parse($this->exit_date);
-            
-            $diffInDays = $entry_date->diffInDays($exit_date);
-            
-            return $diffInDays >= 7 ? 'close' : 'open';
+        return $this->exit_date ? 'close' : 'open';
     }
-}
+
 
     public function getTotalPriceAttribute()
     {

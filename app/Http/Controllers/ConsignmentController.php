@@ -74,7 +74,6 @@ class ConsignmentController extends Controller
         return redirect()->route('laporan.index');
     }
     
-    //
 
     public function mainpageIndex()
     {
