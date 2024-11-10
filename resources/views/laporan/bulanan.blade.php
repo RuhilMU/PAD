@@ -6,7 +6,7 @@
 </head>
 
 @section('content')
-    <section class="bg-[#F4F1E6] p-20">
+    <section class="p-20">
         <div class="mx-auto"><canvas id="bulanan"></canvas></div>
     </section>
 
