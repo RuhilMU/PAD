@@ -13,7 +13,7 @@
 </div>
 
 <!-- tabel barang titipan -->
-<div style="width: 60%;" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto mt-4">
+<div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <span class="col p-6 items-center" style="color: #161D6F;font-weight:bold; font-size:16px">Monitoring Barang</span>
         <div class="relative mr-5">

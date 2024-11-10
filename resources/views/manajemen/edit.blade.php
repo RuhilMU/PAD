@@ -1,22 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.laporan2')
+@section('title laporan', 'Edit Data Pegawai')
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit User</title>
+    <title>Edit Data Pegawai</title>
 </head>
-<body>
-    <form method="post" action="{{ route('pegawai.update', $user->user_id) }}">
-        @csrf
-            <label for="name">Nama</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
 
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
+@section('content')
 
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" value="{{ $user->password }}">
+<section class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="w-full rounded-full sm:max-w-md xl:p-0">
+        <div class="bg-gradient-to-b from-[#CDDAF8] drop-shadow-lg to-[#E5EEFF] px-44 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
+            <h1 class="text-center font-bold leading-tight tracking-tight text-white md:text-2xl">
+                Edit Pegawai
+            </h1>
+            <form class="space-y-4 md:space-y-6 px-10" method="post" action="{{ route('pegawai.update', $user->user_id) }}">
+                @csrf
 
-        <button type="submit" class="btn btn-primary">Update User</button>
-    </form>
-</div>  
+                <input type="text" id="name" name="name" value="{{ $user->name }}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="Nama Pegawai" required="">
+
+                <input type="email" id="email" name="email" value="{{ $user->email }}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="Email" required="">
+
+                <input type="password" id="password" name="password" value="{{ $user->password }}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="Password" required="">
+
+                <button type="submit"
+                    class="bg-[#4C7DE7] ml-28 shadow-lg text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    Simpan</button>
+            </form>
+        </div>
+    </div>
+</section>
+@endsection
