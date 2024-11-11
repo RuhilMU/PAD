@@ -7,10 +7,11 @@
 
 @section('content')
 <section class="p-10">
-    <div class="mx-auto drop-shadow-md"><canvas id="acquisitions"></canvas></div>
+    <!-- line chart -->
+    <div class="mx-auto drop-shadow-lg"><canvas id="acquisitions"></canvas></div>
 
     <!-- tabel barang -->
-    <div class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4">
+    <div class="relative overflow-x-auto drop-shadow-lg sm:rounded-lg mx-auto mt-4">
         <div class="flex items-center" style="background:#EEF0F4">
             <a href="/tambah-transaksi" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
             <a href="/edit-transaksi" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Edit</a>
