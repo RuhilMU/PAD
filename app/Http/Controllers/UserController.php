@@ -13,8 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data_user = User::all();
-
+        $data_user = User::where('role', 'pegawai')->get();
         return view('manajemen.pegawai', compact('data_user'));
     }
 

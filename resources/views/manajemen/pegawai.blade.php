@@ -56,7 +56,7 @@
                     {{ $user->email }}
                 </td>
                 <td class="px-6 py-4">
-                    *****
+                    {{ $user->password }}
                 </td>
 
                 <td class="px-6 py-4">
