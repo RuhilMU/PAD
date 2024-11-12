@@ -9,12 +9,12 @@
 <body>
     <section>
         <div class="bg-[#F4F1E6] flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+            <a class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                 <img class="w-20 h-20 mr-2" src="src/Logo.png"
                     alt="logo">
             </a>
 
-            <div class="w-full rounded-full shadow sm:max-w-md xl:p-0">
+            <div class="w-full rounded-full drop-shadow-lg sm:max-w-md xl:p-0">
                 <div class="p-6 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                         Password Baru

@@ -8,7 +8,7 @@
 
 <section>
     <div class="bg-[#F4F1E6] flex flex-row items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a href="#" class="flex flex-col items-center mr-60 text-2xl font-semibold text-gray-900">
+        <a class="flex flex-col items-center mr-60 text-2xl font-semibold text-gray-900">
             <img class="w-40 h-40 mr-2 mb-6" src="src/Logo.png"
                 alt="logo">
             <span class="font-bold">Web Pengelola Keuangan</span>

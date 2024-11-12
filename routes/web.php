@@ -15,7 +15,7 @@ Route::get('/', function () {
 // });
 
 Route::get('/transaksi', function () {
-    return view('laporan.transaksi');
+    return view('transaksi.transaksi');
 });
 
 Route::get('/tambah-transaksi', function () {

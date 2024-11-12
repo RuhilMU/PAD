@@ -13,9 +13,9 @@
 </div>
 
 <!-- tabel barang titipan -->
-<div style="width: 60%;" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto mt-4">
+<div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
-        <span class="col p-6 items-center" style="color: #161D6F;font-weight:bold; font-size:16px">Daftar Barang</span>
+        <span class="col p-6 items-center" style="color: #161D6F;font-weight:bold; font-size:16px">Monitoring Barang</span>
         <div class="relative mr-5">
             <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                 <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
