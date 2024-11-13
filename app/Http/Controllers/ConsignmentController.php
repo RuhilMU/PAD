@@ -15,7 +15,7 @@ class ConsignmentController extends Controller
         $consignments = Consignment::with('product', 'store')
         ->get()
         ->map(function ($consignment) {
-            $status = Carbon::parse($consignment->entry_date)->diffInDays(Carbon::now()) > 7 ? 'close' : 'open';
+            $status = $consignment->exit_date ? 'Close' : 'Open';
 
             $circulationDuration = $consignment->entry_date && $consignment->exit_date 
                 ? Carbon::parse($consignment->entry_date)->diffInDays(Carbon::parse($consignment->exit_date)) 
@@ -24,7 +24,9 @@ class ConsignmentController extends Controller
             $totalPrice = $consignment->quantity * $consignment->product->price;
 
             return [
+                'consignment_id' => $consignment->consignment_id,
                 'product_name' => $consignment->product->product_name,
+                'store_name' => $consignment->store->store_name,
                 'status' => $status,
                 'circulation_duration' => $circulationDuration,
                 'entry_date' => $consignment->entry_date,
@@ -35,36 +37,82 @@ class ConsignmentController extends Controller
             ];
         });
 
-        return view('laporan.transaksi', compact('consignments'));
+        return view('transaksi.transaksi', compact('consignments'));
     }
 
-    public function laporanStore(Request $request)
+    public function laporanEdit($consignment_id)
     {
-        $validated = $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'store_id' => 'required|exists:stores,id',
+        $consignment = Consignment::find($consignment_id);
+        return view('transaksi.edit', compact('consignment'));
+    }
+
+    public function laporanCreate()
+    {
+        return view('transaksi.tambah');
+    }
+
+        public function laporanStore(Request $request)
+        {
+            $request->validate([
+                'product_name' => 'required|string',
+                'store_name' => 'required|string',
+                'price' => 'required|integer',
+                'quantity' => 'required|integer',
+                'entry_date' => 'required|date',
+                'exit_date' => 'nullable|date',
+            ]);
+
+            $consignment = new Consignment();
+            
+            $product = Product::create(['product_name'=>$request->product_name, 'price'=>$request->price]);
+            $store = Store::create(['store_name'=>$request->store_name]);
+
+            $consignment->product_id = $product->product_id;
+            $consignment->store_id = $store->store_id;
+            $consignment->quantity = $request->quantity;
+            $consignment->entry_date = $request->entry_date;
+
+            if ($request->has('exit_date')) {
+                $consignment->exit_date = $request->exit_date;
+            }
+            $consignment->save();
+            return redirect('/transaksi');
+        }
+
+    
+
+    public function laporanUpdate(Request $request, $consignment_id)
+    {
+        $request->validate([
+            'store_name' => 'required|string',
+            'product_name' => 'required|string',
             'quantity' => 'required|integer',
+            'price' => 'required|integer',
             'entry_date' => 'required|date',
             'exit_date' => 'nullable|date',
         ]);
 
-        Consignment::create($validated);
-        return redirect()->route('laporan.index');
+        $consignment = Consignment::with(['store','product'])->find($consignment_id);
+
+        // $consignment->store->store_name = $request->store_name;
+        // $consignment->store->save();
+        $consignment->store->update(['store_name'=>$request->store_name]);
+
+        // $consignment->product->product_name = $request->product_name;
+        // $consignment->product->save();
+        $consignment->product->update(['product_name'=>$request->product_name]);
+        $consignment->product->update(['price'=>$request->price]);
+
+        $consignment->quantity = $request->quantity;
+        $consignment->entry_date = $request->entry_date;
+
+        if ($request->has('exit_date')) {
+            $consignment->exit_date = $request->exit_date;
+        }
+        $consignment->save();
+        return redirect('/transaksi');
     }
 
-    public function laporanUpdate(Request $request, Consignment $consignment)
-    {
-        $validated = $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'store_id' => 'required|exists:stores,id',
-            'quantity' => 'required|integer',
-            'entry_date' => 'required|date',
-            'exit_date' => 'nullable|date',
-        ]);
-
-        $consignment->update($validated);
-        return redirect()->route('laporan.index');
-    }
 
     public function laporanDestroy($consignment_id)
     {

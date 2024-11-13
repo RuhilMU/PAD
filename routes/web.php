@@ -14,17 +14,17 @@ Route::get('/', function () {
 //     return view('home.home');
 // });
 
-Route::get('/transaksi', function () {
-    return view('transaksi.transaksi');
-});
+// Route::get('/transaksi', function () {
+//     return view('transaksi.transaksi');
+// });
 
-Route::get('/tambah-transaksi', function () {
-    return view('transaksi.tambah');
-});
+// Route::get('/tambah-transaksi', function () {
+//     return view('transaksi.tambah');
+// });
 
-Route::get('/edit-transaksi', function () {
-    return view('transaksi.edit');
-});
+// Route::get('/edit-transaksi', function () {
+//     return view('transaksi.edit');
+// });
 
 Route::get('/mingguan', function () {
     return view('laporan.mingguan');
@@ -61,10 +61,12 @@ Route::delete('/barang/{expense_id}', [ExpenseController::class, 'destroy'])->na
 Route::get('/barang/edit/{expense_id}', [ExpenseController::class, 'edit'])->name('barang.edit');
 Route::post('/barang/update/{expense_id}', [ExpenseController::class, 'update'])->name('barang.update');
 
-Route::get('/laporan', [ConsignmentController::class, 'laporanIndex'])->name('laporan.index');
-Route::post('/laporan', [ConsignmentController::class, 'laporanStore'])->name('laporan.store');
-Route::put('/laporan/{consignment}', [ConsignmentController::class, 'laporanUpdate'])->name('laporan.update');
-Route::delete('/laporan/{consignment}', [ConsignmentController::class, 'laporanDestroy'])->name('laporan.destroy');
+Route::get('/transaksi', [ConsignmentController::class, 'laporanIndex'])->name('laporan.index');
+Route::get('/transaksi/tambah', [ConsignmentController::class, 'laporanCreate'])->name('laporan.create');
+Route::post('/transaksi', [ConsignmentController::class, 'laporanStore'])->name('laporan.store');
+Route::post('/transaksi/update/{consignment_id}', [ConsignmentController::class, 'laporanUpdate'])->name('laporan.update');
+Route::get('/transaksi/edit/{consignment_id}', [ConsignmentController::class, 'laporanEdit'])->name('laporan.edit');
+Route::delete('/transaksi/{consignment_id}', [ConsignmentController::class, 'laporanDestroy'])->name('laporan.destroy');
 
 Route::get('/dashboard', [ConsignmentController::class, 'mainpageIndex'])->name('mainpage.index');
 Route::get('/dashboard/search', [ConsignmentController::class, 'mainpageSearch'])->name('mainpage.search');

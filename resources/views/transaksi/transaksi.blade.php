@@ -13,7 +13,7 @@
     <!-- tabel barang -->
     <div class="relative overflow-x-auto drop-shadow-lg sm:rounded-lg mx-auto mt-4">
         <div class="flex items-center" style="background:#EEF0F4">
-            <a href="/tambah-transaksi" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
+            <a href="{{ route('laporan.create') }}" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
             <a href="/edit-transaksi" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Edit</a>
         </div>
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -54,41 +54,42 @@
 
             {{-- Ini nanti isi pakai data dummy aja --}}
             <tbody>
+            @foreach ($consignments as $consignment)
                 <tr class="bg-[#E3ECFF] border-b">
                     <td class="px-6 py-4">
-                        Toko A
+                    {{ $consignment['store_name'] }}
                     </td>
                     <td class="px-6 py-4">
-                        Roti
+                    {{ $consignment['product_name'] }}
                     </td>
                     <td class="px-6 py-4">
-                        Open
+                    {{ $consignment['status'] }}
                     </td>
                     <td class="px-6 py-4">
-                        7 hari
+                    {{ $consignment['circulation_duration'] }}
                     </td>
                     <td class="px-6 py-4">
-                        24/10/2024
+                    {{ $consignment['entry_date'] }}
                     </td>
                     <td class="px-6 py-4">
-                        31/10/2024
+                    {{ $consignment['exit_date'] }}
                     </td>
                     <td class="px-6 py-4">
-                        Rp.4000
+                    Rp {{ $consignment['price'] }}
                     </td>
                     <td class="px-6 py-4">
-                        Rp.400.000
+                    Rp {{ $consignment['total_price'] }}
                     </td>
                     <td class="px-6 py-4">
-                        100
+                    {{ $consignment['quantity'] }}
                     </td>
                     <td class="flex items-center px-6 py-4">
-                        <a href="#" class="bg-white border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
+                        <a href="{{ route('laporan.edit', $consignment['consignment_id']) }}" class="bg-white border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="#222222" fill-rule="evenodd" d="M17.204 10.796L19 9c.545-.545.818-.818.964-1.112a2 2 0 0 0 0-1.776C19.818 5.818 19.545 5.545 19 5s-.818-.818-1.112-.964a2 2 0 0 0-1.776 0c-.294.146-.567.419-1.112.964l-1.819 1.819a10.9 10.9 0 0 0 4.023 3.977m-5.477-2.523l-6.87 6.87c-.426.426-.638.638-.778.9c-.14.26-.199.555-.316 1.145l-.616 3.077c-.066.332-.1.498-.005.593s.26.061.593-.005l3.077-.616c.59-.117.885-.176 1.146-.316s.473-.352.898-.777l6.89-6.89a12.9 12.9 0 0 1-4.02-3.98" clip-rule="evenodd" />
                             </svg>
                         </a>
-                        <form action="#" method="POST" onsubmit="return confirmDelete();">
+                        <form action="{{ route('laporan.destroy', $consignment['consignment_id']) }}" method="POST" onsubmit="return confirmDelete();">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="bg-white border-2 border-[#A3A3A3] rounded p-1 hover:bg-red-100 ml-1" title="Delete">
@@ -102,6 +103,7 @@
                         </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
