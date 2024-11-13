@@ -30,10 +30,7 @@
         <thead class="text-xs text-white uppercase bg-[#324150]">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    No
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama
+                    Name
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Email
@@ -49,9 +46,6 @@
         <tbody>
             @foreach($data_user as $index => $user)
             <tr class="bg-white border-b hover:bg-gray-50">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowra">
-                    {{ $index+1 }}
-                </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $user->name }}
                 </th>

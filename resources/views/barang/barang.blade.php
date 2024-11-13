@@ -23,13 +23,13 @@
         <thead class="text-xs text-white uppercase bg-[#324150]">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Tanggal
+                    Date
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Total Harga
+                    Price
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Keterangan
+                    Description
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
