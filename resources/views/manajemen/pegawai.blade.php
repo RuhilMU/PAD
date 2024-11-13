@@ -10,7 +10,6 @@
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <div class="col">
             <a href="{{ route('pegawai.create')}}" class="col pl-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
-            <a href="/edit-barang" class="col pl-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Edit</a>
         </div>
         <div class="relative">
             <form action="{{ route('pegawai.search') }}" method="GET">

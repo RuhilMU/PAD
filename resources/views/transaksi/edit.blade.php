@@ -24,7 +24,7 @@
                         </g>
                     </svg>
                     <input type="text" name="store_name" id="store_name" value="{{ $consignment->store->store_name }}"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="pl-10 bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Nama Toko" required="">
                 </div>
 
@@ -39,7 +39,7 @@
                         </g>
                     </svg>
                     <input type="text" name="product_name" id="product_name" value="{{ $consignment->product->product_name }}"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="pl-10 bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Nama Barang" required="">
                 </div>
 
@@ -50,7 +50,7 @@
                         <path fill="black" fill-rule="evenodd" d="M9.75 7.75A.75.75 0 0 1 10.5 7h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75" clip-rule="evenodd" />
                     </svg>
                     <input type="date" name="entry_date" id="entry_date" value="{{ $consignment->entry_date }}"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="pl-10 bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Tanggal Masuk" required="">
                 </div>
 
@@ -61,7 +61,7 @@
                         <path fill="black" fill-rule="evenodd" d="M9.75 7.75A.75.75 0 0 1 10.5 7h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75" clip-rule="evenodd" />
                     </svg>
                     <input type="date" name="exit_date" id="exit_date" value="{{ $consignment->exit_date }}"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="pl-10 bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Tanggal Keluar">
                 </div>
 
@@ -70,7 +70,7 @@
                         <path fill="black" d="M0 64c0-17.7 14.3-32 32-32h80c79.5 0 144 64.5 144 144c0 58.8-35.2 109.3-85.7 131.7l51.4 128.4c6.6 16.4-1.4 35-17.8 41.6s-35-1.4-41.6-17.8l-56-139.9H64v128c0 17.7-14.3 32-32 32S0 465.7 0 448zm64 192h48c44.2 0 80-35.8 80-80s-35.8-80-80-80H64zm256-96h80c61.9 0 112 50.1 112 112s-50.1 112-112 112h-48v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V192c0-17.7 14.3-32 32-32m80 160c26.5 0 48-21.5 48-48s-21.5-48-48-48h-48v96z" />
                     </svg>
                     <input type="number" name="price" id="price" value="{{ $consignment->product->price }}"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="pl-10 bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Harga" required="">
                 </div>
 
@@ -79,12 +79,12 @@
                         <path fill="black" d="m225.6 62.64l-88-48.17a19.91 19.91 0 0 0-19.2 0l-88 48.17A20 20 0 0 0 20 80.19v95.62a20 20 0 0 0 10.4 17.55l88 48.17a19.89 19.89 0 0 0 19.2 0l88-48.17a20 20 0 0 0 10.4-17.55V80.19a20 20 0 0 0-10.4-17.55M128 36.57L200 76l-21.43 11.73l-72-39.42Zm0 78.83L56 76l25.56-14l72 39.41ZM44 96.79l72 39.4v76.67l-72-39.42Zm96 116.07v-76.67l24-13.13V152a12 12 0 0 0 24 0v-42.08l24-13.13v76.65Z" />
                     </svg>
                     <input type="number" name="quantity" id="quantity" value="{{ $consignment->quantity }}"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="pl-10 bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Stok" required="">
                 </div>
 
                 <button type="submit"
-                    class="bg-[#4C7DE7] ml-28 drop-shadow-lg text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    class="pl-10 bg-[#4C7DE7] ml-28 drop-shadow-lg text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5">
                     Simpan
                 </button>
             </form>
