@@ -10,7 +10,6 @@
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <div class="col">
             <a href="{{ route('pegawai.create')}}" class="col pl-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
-            <a href="/edit-barang" class="col pl-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Edit</a>
         </div>
         <div class="relative">
             <form action="{{ route('pegawai.search') }}" method="GET">
@@ -21,7 +20,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input type="search" id="search" class="mr-3 block w-72 h-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search" required />
+                    <input type="text" name="nama" id="search" class="mr-3 block w-72 h-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search" required />
 
                 </div>
             </form>
@@ -31,10 +30,7 @@
         <thead class="text-xs text-white uppercase bg-[#324150]">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    No
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama
+                    Name
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Email
@@ -50,9 +46,6 @@
         <tbody>
             @foreach($data_user as $index => $user)
             <tr class="bg-white border-b hover:bg-gray-50">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowra">
-                    {{ $index+1 }}
-                </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $user->name }}
                 </th>

@@ -11,7 +11,6 @@
     <div class="flex items-center justify-between p-2" style="background:#EEF0F4">
         <div class="col">
             <a href="{{ route('barang.create')}}" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
-            <a href="/edit-barang" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Edit</a>
         </div>
         <button type="button" class="text-white bg-[#0090F0] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center me-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 me-2" viewBox="0 0 24 24">
@@ -24,13 +23,13 @@
         <thead class="text-xs text-white uppercase bg-[#324150]">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Tanggal
+                    Date
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Total Harga
+                    Price
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Keterangan
+                    Description
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
