@@ -7,7 +7,11 @@ use App\Http\Controllers\ConsignmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('barang.unduh');
+});
+
+Route::get('/unduh', function () {
+    return view('barang.unduh');
 });
 
 // Route::get('/dashboard', function () {
