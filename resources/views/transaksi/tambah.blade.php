@@ -13,29 +13,29 @@
             <h1 class="text-center font-bold leading-tight tracking-tight text-white md:text-2xl">
                 Input Transaksi
             </h1>
-            <form class="space-y-4 md:space-y-6 px-10" method="POST">
+            <form class="space-y-4 md:space-y-6 px-10" method="POST" action="{{ route('laporan.store') }}">
                 @csrf
-                <input type="text" name="nama_barang" id="nama_barang"
+                <input type="text" name="store_name" id="store_name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Nama Toko" required="">
 
-                <input type="text" name="nama_barang" id="nama_barang"
+                <input type="text" name="product_name" id="product_name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Nama Barang" required="">
 
-                <input type="date" name="tanggal_masuk" id="tanggal_masuk"
+                <input type="date" name="entry_date" id="entry_date"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Tanggal Masuk" required="">
 
-                <input type="date" name="tanggal_keluar" id="tanggal_keluar"
+                <input type="date" name="exit_date" id="exit_date"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Tanggal Keluar" required="">
+                    placeholder="Tanggal Keluar">
 
-                <input type="number" name="harga" id="harga"
+                <input type="number" name="price" id="price"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Harga" required="">
 
-                <input type="number" name="Stok" id="Stok"
+                <input type="number" name="quantity" id="quantity"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Stok" required="">
                     

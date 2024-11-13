@@ -13,30 +13,39 @@
             <h1 class="text-center font-bold leading-tight tracking-tight text-white md:text-2xl">
                 Edit Transaksi
             </h1>
-            <form class="space-y-4 md:space-y-6 px-10" method="POST">
+            <form class="space-y-4 md:space-y-6 px-10" method="POST" action="{{ route('laporan.update', $consignment->consignment_id) }}">
                 @csrf
-                <input type="text" name="nama_barang" id="nama_barang"
+                
+                <input type="text" name="store_name" id="store_name" value="{{ $consignment->store->store_name }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Nama Toko" required="">
-                <input type="text" name="nama_barang" id="nama_barang"
+                    
+                <input type="text" name="product_name" id="product_name" value="{{ $consignment->product->product_name }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Nama Barang" required="">
-                <input type="date" name="tanggal_masuk" id="tanggal_masuk"
+                    
+                <input type="date" name="entry_date" id="entry_date" value="{{ $consignment->entry_date }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Tanggal Masuk" required="">
-                <input type="date" name="tanggal_keluar" id="tanggal_keluar"
+                    
+                <input type="date" name="exit_date" id="exit_date" value="{{ $consignment->exit_date }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Tanggal Keluar" required="">
-                <input type="number" name="harga" id="harga"
+                    placeholder="Tanggal Keluar">
+
+                <input type="number" name="price" id="price" value="{{ $consignment->product->price }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Harga" required="">
-                <input type="number" name="Stok" id="Stok"
+                    
+                <input type="number" name="quantity" id="quantity" value="{{ $consignment->quantity }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Stok" required="">
+
                 <button type="submit"
                     class="bg-[#4C7DE7] ml-28 drop-shadow-lg text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5">
-                    Simpan</button>
+                    Simpan
+                </button>
             </form>
+
         </div>
     </div>
 </section>
