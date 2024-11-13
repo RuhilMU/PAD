@@ -19,31 +19,31 @@
             <thead class="text-xs text-white uppercase bg-[#324150]">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Nama Toko
+                        Store
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nama Barang
+                        Product
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Waktu Edar
+                        Sell Time
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Tanggal Masuk
+                        Entry Date
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Tanggal Keluar
+                        Exit Date
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Harga
+                        Price
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Harga Total
+                        Stock
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Stok
+                        Sold
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
