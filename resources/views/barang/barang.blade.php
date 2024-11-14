@@ -7,7 +7,7 @@
 
 @section('content')
 <!-- tabel barang -->
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-28 my-10">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-52 my-24">
     <div class="flex items-center justify-between p-2" style="background:#EEF0F4">
         <div class="col">
             <a href="{{ route('barang.create')}}" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
@@ -34,7 +34,6 @@
                     Description
                 </th>
                 <th scope="col" class="px-3 py-3">
-                    Action
                 </th>
             </tr>
         </thead>
