@@ -76,10 +76,10 @@
                     {{ 'Rp ' . number_format($consignment['price']  , 2, ',', '.') }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ 'Rp ' . number_format($consignment['total_price']  , 2, ',', '.') }}
+                    {{ $consignment['quantity'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['quantity'] }}
+                    {{ $consignment['sold'] }}
                     </td>
                     <td class="flex items-center px-3 py-1">
                         <a href="{{ route('laporan.edit', $consignment['consignment_id']) }}" class="bg-white border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
