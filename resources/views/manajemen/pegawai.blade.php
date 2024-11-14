@@ -21,9 +21,21 @@
                         </svg>
                     </div>
                     <input type="text" name="nama" id="search" class="mr-3 block w-72 h-5 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search" required />
-
                 </div>
             </form>
+            @if (!empty($cari))
+                @if (count($data_user))
+                    <div class="alert alert-success">
+                        Ditemukan <strong>{{ count($data_user) }}</strong> user dengan kata: <h4>{{ $cari }}</h4>
+                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
+                    </div>
+                @else
+                    <div class="alert alert-warning">
+                        <h4>User {{ $cari }} tidak ditemukan</h4>
+                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
+                    </div>
+                @endif
+            @endif
         </div>
     </div>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">

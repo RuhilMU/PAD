@@ -27,6 +27,19 @@
             </form>
         </div>
     </div>
+            @if (!empty($search))
+                @if (count($consignments) > 0)
+                    <div class="alert alert-success">
+                        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
+                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
+                    </div>
+                @else
+                    <div class="alert alert-warning">
+                        <h4>Data {{ $search }} tidak ditemukan</h4>
+                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
+                    </div>
+                @endif
+            @endif
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-white uppercase bg-[#161D6F]">
             <tr>

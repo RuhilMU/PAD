@@ -52,7 +52,7 @@ Route::post('/pegawai', [UserController::class, 'store'])->name('pegawai.store')
 Route::delete('/pegawai/{user_id}', [UserController::class, 'destroy'])->name('pegawai.destroy');
 Route::get('/pegawai/edit/{user_id}', [UserController::class, 'edit'])->name('pegawai.edit');
 Route::post('/pegawai/update/{user_id}', [UserController::class, 'update'])->name('pegawai.update');
-Route::get('/pegawai/search', [UserController::class, 'search'])->name('pegawai.search');
+Route::get('/pegawai', [UserController::class, 'search'])->name('pegawai.search');
 
 Route::get('/barang', [ExpenseController::class, 'index']);
 Route::get('/barang/create', [ExpenseController::class, 'create'])->name('barang.create');
