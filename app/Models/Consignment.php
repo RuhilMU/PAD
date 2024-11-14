@@ -15,13 +15,15 @@ class Consignment extends Model
         'product_id',
         'store_id',
         'quantity',
-        'entry_date', 
-        'exit_date',
+        'exit_date', 
+        'entry_date',
+        'sold',
+        'income',
     ];
 
     protected $dates = [
-        'entry_date',
         'exit_date',
+        'entry_date',
     ];
 
     public function product()
@@ -36,20 +38,20 @@ class Consignment extends Model
 
     public function getCirculationDurationAttribute()
     {
-        return $this->exit_date
-            ? $this->entry_date->diffInDays($this->exit_date)
+        return $this->entry_date
+            ? $this->exit_date->diffInDays($this->entry_date)
             : null;
     }
 
     public function getStatusAttribute()
     {
-        return $this->exit_date ? 'close' : 'open';
+        return $this->entry_date ? 'close' : 'open';
     }
 
 
-    public function getTotalPriceAttribute()
+    public function getPendapatan()
     {
-        return $this->quantity * $this->product->price;
+        return $this->sold * $this->product->price;
     }
 
     // protected static function boot()
@@ -57,8 +59,8 @@ class Consignment extends Model
     //     parent::boot();
 
     //     static::saving(function ($consignment) {
-    //         if ($consignment->entry_date && $consignment->exit_date) {
-    //             $diffInDays = $consignment->entry_date->diffInDays($consignment->exit_date);
+    //         if ($consignment->exit_date && $consignment->entry_date) {
+    //             $diffInDays = $consignment->exit_date->diffInDays($consignment->entry_date);
 
     //             $consignment->status = $diffInDays >= 7 ? 'close' : 'open';
     //         }
