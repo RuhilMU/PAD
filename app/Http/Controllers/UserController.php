@@ -34,7 +34,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:5',
+            'password' => 'required|min:5|confirmed',
         ]);
         
             $user = new User();
@@ -72,15 +72,17 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:5',
+            'password' => 'nullable|min:5',
         ]);
 
             $user = User::find($user_id);
             $user->name = $request->name;
             $user->email = $request->email;
-            if ($request->password) {
+
+            if ($request->filled('password')) {
                 $user->password = Hash::make($request->password);
             }
+            
             $user->save();
 
         return redirect('/pegawai');
