@@ -15,9 +15,11 @@ return new class extends Migration
 
             $table->unsignedBigInteger('store_id');
             $table->foreign('store_id')->references('store_id')->on('stores');
-            $table->date('entry_date');
-            $table->date('exit_date')->nullable();
+            $table->date('entry_date')->nullable();
+            $table->date('exit_date');
             $table->integer('quantity');
+            $table->integer('sold')->nullable();
+            $table->decimal('income', 12, 0)->nullable();
             $table->timestamps();
         });
     }
