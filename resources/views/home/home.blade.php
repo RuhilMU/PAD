@@ -9,8 +9,12 @@
 <!-- 1 diagram -->
 
 <div class="flex items-center justify-center">
-    <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5"><canvas id="harian"></canvas></div>
+    <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5 transition-transform duration-300 ease-in-out hover:scale-105">
+        <a href="/transaksi"><canvas id="harian"></canvas>
+        </a>
+    </div>
 </div>
+
 
 <!-- tabel barang titipan -->
 <div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4">
@@ -27,19 +31,19 @@
             </form>
         </div>
     </div>
-            @if (!empty($search))
-                @if (count($consignments) > 0)
-                    <div class="alert alert-success">
-                        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
-                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
-                    </div>
-                @else
-                    <div class="alert alert-warning">
-                        <h4>Data {{ $search }} tidak ditemukan</h4>
-                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
-                    </div>
-                @endif
-            @endif
+    @if (!empty($search))
+    @if (count($consignments) > 0)
+    <div class="alert alert-success">
+        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
+        <a href="/pegawai" class="btn btn-warning">Kembali</a>
+    </div>
+    @else
+    <div class="alert alert-warning">
+        <h4>Data {{ $search }} tidak ditemukan</h4>
+        <a href="/pegawai" class="btn btn-warning">Kembali</a>
+    </div>
+    @endif
+    @endif
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-white uppercase bg-[#161D6F]">
             <tr>
@@ -144,6 +148,15 @@
                         fill: false
                     }
                 ]
+            },
+            options: {
+                animation: {
+                    duration: 1000, // The duration of the initial animation
+                    easing: 'easeOutBounce' // The easing function for animation
+                },
+                hover: {
+                    animationDuration: 500 // Animation duration for hover effect
+                }
             }
         });
     });

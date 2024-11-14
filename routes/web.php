@@ -7,7 +7,7 @@ use App\Http\Controllers\ConsignmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('barang.unduh');
+    return view('auth.login');
 });
 
 Route::get('/unduh', function () {
@@ -18,9 +18,9 @@ Route::get('/unduh', function () {
 //     return view('home.home');
 // });
 
-// Route::get('/transaksi', function () {
-//     return view('transaksi.transaksi');
-// });
+Route::get('/transaksi', function () {
+    return view('transaksi.transaksi');
+});
 
 // Route::get('/tambah-transaksi', function () {
 //     return view('transaksi.tambah');
