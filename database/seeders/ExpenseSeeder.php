@@ -16,7 +16,6 @@ class ExpenseSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             Expense::create([
-                'user_id' => fake()->numberBetween(1,10),
                 'description' => fake()->sentence(3),
                 'amount' => fake()->numberBetween(50000,200000),
                 'date' => fake()->date()

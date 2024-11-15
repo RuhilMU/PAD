@@ -104,6 +104,23 @@
                 @endforeach
             </tbody>
         </table>
+        <form method="GET" action="{{ route('laporan.index') }}" class="mb-4">
+            <label for="per_page">Items per page:</label>
+                <select name="per_page" id="per_page" onchange="this.form.submit()">
+                    <option value="1" {{ request('per_page') == 1 ? 'selected' : '' }}>1</option>
+                    <option value="5" {{ request('per_page') == 5 ? 'selected' : '' }}>5</option>
+                    <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="15" {{ request('per_page') == 15 ? 'selected' : '' }}>15</option>
+                    <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
+                    <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="30" {{ request('per_page') == 30 ? 'selected' : '' }}>30</option>
+                    <option value="35" {{ request('per_page') == 35 ? 'selected' : '' }}>35</option>
+                    <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
+                    <option value="45" {{ request('per_page') == 45 ? 'selected' : '' }}>45</option>
+                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                </select>
+        </form>
+        <div>{{ $consignments->links('pagination::bootstrap-5') }}</div>
     </div>
 </section>
 

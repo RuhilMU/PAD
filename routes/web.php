@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ConsignmentController;
@@ -21,14 +20,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/transaksi/{consignment_id}', [ConsignmentController::class, 'laporanDestroy'])->name('laporan.destroy');
 
     Route::middleware('owner')->group(function () {
-        Route::get('/pegawai', [UserController::class, 'index']);
+        Route::get('/pegawai', [UserController::class, 'index'])->name('pegawai.index');
         Route::get('/pegawai/create', [UserController::class, 'create'])->name('pegawai.create');
         Route::post('/pegawai', [UserController::class, 'store'])->name('pegawai.store');
         Route::delete('/pegawai/{user_id}', [UserController::class, 'destroy'])->name('pegawai.destroy');
         Route::get('/pegawai/edit/{user_id}', [UserController::class, 'edit'])->name('pegawai.edit');
         Route::post('/pegawai/update/{user_id}', [UserController::class, 'update'])->name('pegawai.update');
         Route::get('/pegawai', [UserController::class, 'search'])->name('pegawai.search');
-        Route::get('/barang', [ExpenseController::class, 'index']);
+
+        Route::get('/barang', [ExpenseController::class, 'index'])->name('barang.index');
         Route::get('/barang/create', [ExpenseController::class, 'create'])->name('barang.create');
         Route::post('/barang', [ExpenseController::class, 'store'])->name('barang.store');
         Route::delete('/barang/{expense_id}', [ExpenseController::class, 'destroy'])->name('barang.destroy');

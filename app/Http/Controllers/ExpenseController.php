@@ -12,10 +12,11 @@ class ExpenseController extends Controller
     /**
      * Display a listing of the expenses.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data_keluar = Expense::with('user')->get();
-        return view('barang.barang', compact('data_keluar'));
+        $perPage = $request->input('per_page', 1);
+        $data_keluar = Expense::with('user')->paginate($perPage);;
+        return view('barang.barang', compact('data_keluar', 'perPage'));
     }
 
     /**

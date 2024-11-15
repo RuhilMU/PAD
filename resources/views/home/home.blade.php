@@ -14,8 +14,6 @@
         </a>
     </div>
 </div>
-
-
 <!-- tabel barang titipan -->
 <div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4 mb-10">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
@@ -31,19 +29,18 @@
             </form>
         </div>
     </div>
-    @if (!empty($search))
-    @if (count($consignments) > 0)
-    <div class="alert alert-success">
-        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
-        <a href="/pegawai" class="btn btn-warning">Kembali</a>
-    </div>
-    @else
-    <div class="alert alert-warning">
-        <h4>Data {{ $search }} tidak ditemukan</h4>
-        <a href="/pegawai" class="btn btn-warning">Kembali</a>
-    </div>
-    @endif
-    @endif
+<<<<<<< HEAD
+            @if (!empty($search))
+                @if (count($consignments) > 0)
+                    <div class="alert alert-success">
+                        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
+                    </div>
+                @else
+                    <div class="alert alert-warning">
+                        <h4>Data {{ $search }} tidak ditemukan</h4>
+                    </div>
+                @endif
+            @endif
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-white uppercase bg-[#161D6F]">
             <tr>
