@@ -18,6 +18,7 @@ class ConsignmentSeeder extends Seeder
             Consignment::create([
                 'product_id' => fake()->numberBetween(1, 10),
                 'store_id' => fake()->numberBetween(1, 10),
+                'user_id' => fake()->numberBetween(1, 10),
                 'entry_date' => fake()->date(),
                 'exit_date' => fake()->date(),
                 'quantity' => fake()->numberBetween(30, 100),

@@ -11,7 +11,6 @@
 <div class="flex items-center justify-center">
     <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5"><canvas id="harian"></canvas></div>
 </div>
-
 <!-- tabel barang titipan -->
 <div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
@@ -31,12 +30,10 @@
                 @if (count($consignments) > 0)
                     <div class="alert alert-success">
                         Ditemukan <strong>{{ count($consignments) }}</strong> Data:
-                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
                     </div>
                 @else
                     <div class="alert alert-warning">
                         <h4>Data {{ $search }} tidak ditemukan</h4>
-                    <a href="/pegawai" class="btn btn-warning">Kembali</a>
                     </div>
                 @endif
             @endif
