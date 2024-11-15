@@ -37,10 +37,10 @@
                     <a href="/mingguan" class="block px-4 py-2 hover:bg-gray-100">Mingguan</a>
                 </li>
                 <li>
-                    <a href="bulanan" class="block px-4 py-2 hover:bg-gray-100">Bulanan</a>
+                    <a href="/bulanan" class="block px-4 py-2 hover:bg-gray-100">Bulanan</a>
                 </li>
                 <li>
-                    <a href="riwayat" class="block px-4 py-2 hover:bg-gray-100">Riwayat Penghasilan</a>
+                    <a href="/riwayat" class="block px-4 py-2 hover:bg-gray-100">Riwayat Penghasilan</a>
                 </li>
             </ul>
         </div>

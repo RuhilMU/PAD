@@ -13,7 +13,7 @@
 <nav class="bg-gradient-to-r from-[#161D6F] to-[#4854EB] max-w-screen flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
         <a href="/dashboard" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
-            <img src="img/lucide--home.svg" class="h-10" alt="Flowbite Logo" />
+            <img src="{{ asset('img/lucide--home.svg') }}" class="h-10" alt="Flowbite Logo" />
         </a>
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto" id="navbar-sticky">
