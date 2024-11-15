@@ -23,6 +23,7 @@
                 <a href="/transaksi" class="flex flex-row py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
                 <img src="{{ asset('img/transaksi.svg') }}" alt="adasa" class="w-9 h-6"> Transaksi</a>
             </li>
+            @if (Auth::User()->role == 'owner')
             <li>                   
                 <a href="/mingguan" class="flex flex-row py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
                 <img src="{{ asset('img/logo_1.svg') }}" alt="adasa" class="w-9 h-6"> Laporan Keuangan</a>
@@ -35,6 +36,7 @@
                 <a href="/pegawai" class="flex flex-row py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
                     <img src="{{ asset('img/profile.svg') }}" alt="adasa" class="w-9 h-6"> Manajemen Pegawai</a>
             </li>
+            @endif
         </ul>
     </div>
     <div>
