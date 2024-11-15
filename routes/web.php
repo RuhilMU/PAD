@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ConsignmentController::class, 'mainpageIndex'])->name('mainpage.index');
     Route::get('/dashboard/search', [ConsignmentController::class, 'mainpageSearch'])->name('mainpage.search');
@@ -35,13 +36,19 @@ Route::middleware('auth')->group(function () {
         Route::post('/barang/update/{expense_id}', [ExpenseController::class, 'update'])->name('barang.update');
     });
 });
+
+
+Route::get('/unduh', function () {
+    return view('barang.unduh');
+});
+
 // Route::get('/dashboard', function () {
 //     return view('home.home');
 // });
 
-// Route::get('/transaksi', function () {
-//     return view('transaksi.transaksi');
-// });
+Route::get('/transaksi', function () {
+    return view('transaksi.transaksi');
+});
 
 // Route::get('/tambah-transaksi', function () {
 //     return view('transaksi.tambah');
