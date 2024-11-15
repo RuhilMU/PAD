@@ -9,7 +9,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-28 my-10">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <div class="col">
-            <a href="{{ route('pegawai.create')}}" class="col pl-3 items-center text-blue-300 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
+            <a href="{{ route('pegawai.create')}}" class="col pl-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
         </div>
         <div class="relative">
             <form action="{{ route('pegawai.search') }}" method="GET">
@@ -64,7 +64,7 @@
                     {{ $user->email }}
                 </td>
                 <td class="px-3 py-1">
-                    *****
+                    ********
                 </td>
 
                 <td class="flex items-center px-3 py-1">

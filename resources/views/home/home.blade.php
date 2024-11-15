@@ -17,7 +17,7 @@
 
 
 <!-- tabel barang titipan -->
-<div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4">
+<div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4 mb-10">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <span class="col p-6 items-center" style="color: #161D6F;font-weight:bold; font-size:16px">Monitoring Barang</span>
         <div class="relative mr-5">
@@ -27,7 +27,7 @@
                 </svg>
             </div>
             <form action="{{ route('mainpage.search') }}" method="GET">
-                <input type="text" name="search" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-40 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
+                <input type="text" name="search" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-56 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
             </form>
         </div>
     </div>
