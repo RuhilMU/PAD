@@ -23,8 +23,8 @@ class ConsignmentController extends Controller
             $circulationDuration = $consignment->entry_date && $consignment->exit_date 
                 ? Carbon::parse($consignment->exit_date)->diffInDays(Carbon::parse($consignment->entry_date)) 
                 : null;
-            $totalPrice = $consignment->sold * $consignment->product->price;
-    
+            $totalPrice = $consignment->quantity * $consignment->product->price;
+        
             return [
                 'consignment_id' => $consignment->consignment_id,
                 'product_name' => $consignment->product->product_name,
@@ -105,6 +105,7 @@ class ConsignmentController extends Controller
         $consignment->exit_date = $request->exit_date;
         $consignment->sold = $request->sold;
         $consignment->quantity = $request->quantity;
+        $consignment->income = $consignment->sold * $consignment->product->price;
         $consignment->user_id = Auth::id();
         $consignment->save();
         return redirect('/transaksi');

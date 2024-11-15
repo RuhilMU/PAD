@@ -46,9 +46,9 @@ Route::get('/unduh', function () {
 //     return view('home.home');
 // });
 
-Route::get('/transaksi', function () {
-    return view('transaksi.transaksi');
-});
+// Route::get('/transaksi', function () {
+//     return view('transaksi.transaksi');
+// });
 
 // Route::get('/tambah-transaksi', function () {
 //     return view('transaksi.tambah');
