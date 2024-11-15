@@ -3,26 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Consignment;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Store;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Carbon\Carbon;
 
 class ConsignmentController extends Controller
 {
-    public function laporanIndex()
+    public function laporanIndex(Request $request)
     {
+        $perPage = $request->input('per_page', 1);
+
         $consignments = Consignment::with('product', 'store')
-        ->get()
-        ->map(function ($consignment) {
-            $status = $consignment->exit_date ? 'Close' : 'Open';
-
+        ->paginate($perPage);
+        $consignments->getCollection()->transform(function ($consignment) {
+            $status = $consignment->entry_date ? 'Close' : 'Open';
             $circulationDuration = $consignment->entry_date && $consignment->exit_date 
-                ? Carbon::parse($consignment->entry_date)->diffInDays(Carbon::parse($consignment->exit_date)) 
+                ? Carbon::parse($consignment->exit_date)->diffInDays(Carbon::parse($consignment->entry_date)) 
                 : null;
-
-            $totalPrice = $consignment->quantity * $consignment->product->price;
-
+            $totalPrice = $consignment->sold * $consignment->product->price;
+    
             return [
                 'consignment_id' => $consignment->consignment_id,
                 'product_name' => $consignment->product->product_name,
@@ -34,9 +37,10 @@ class ConsignmentController extends Controller
                 'price' => $consignment->product->price,
                 'total_price' => $totalPrice,
                 'quantity' => $consignment->quantity,
+                'sold' => $consignment->sold
             ];
         });
-
+    
         return view('transaksi.transaksi', compact('consignments'));
     }
 
@@ -58,7 +62,6 @@ class ConsignmentController extends Controller
                 'store_name' => 'required|string',
                 'price' => 'required|integer',
                 'quantity' => 'required|integer',
-                'entry_date' => 'required|date',
                 'exit_date' => 'nullable|date',
             ]);
 
@@ -70,11 +73,8 @@ class ConsignmentController extends Controller
             $consignment->product_id = $product->product_id;
             $consignment->store_id = $store->store_id;
             $consignment->quantity = $request->quantity;
-            $consignment->entry_date = $request->entry_date;
-
-            if ($request->has('exit_date')) {
-                $consignment->exit_date = $request->exit_date;
-            }
+            $consignment->exit_date = $request->exit_date;
+            $consignment->user_id = Auth::id();
             $consignment->save();
             return redirect('/transaksi');
         }
@@ -86,10 +86,11 @@ class ConsignmentController extends Controller
         $request->validate([
             'store_name' => 'required|string',
             'product_name' => 'required|string',
-            'quantity' => 'required|integer',
-            'price' => 'required|integer',
             'entry_date' => 'required|date',
-            'exit_date' => 'nullable|date',
+            'exit_date' => 'required|date',
+            'price' => 'required|integer',
+            'sold' => 'required|integer',
+            'quantity' => 'required|integer',
         ]);
 
         $consignment = Consignment::with(['store','product'])->find($consignment_id);
@@ -103,12 +104,10 @@ class ConsignmentController extends Controller
         $consignment->product->update(['product_name'=>$request->product_name]);
         $consignment->product->update(['price'=>$request->price]);
 
-        $consignment->quantity = $request->quantity;
         $consignment->entry_date = $request->entry_date;
-
-        if ($request->has('exit_date')) {
-            $consignment->exit_date = $request->exit_date;
-        }
+        $consignment->exit_date = $request->exit_date;
+        $consignment->sold = $request->sold;
+        $consignment->quantity = $request->quantity;
         $consignment->save();
         return redirect('/transaksi');
     }
@@ -117,6 +116,7 @@ class ConsignmentController extends Controller
     public function laporanDestroy($consignment_id)
     {
         $consignment = Consignment::findOrFail($consignment_id);
+        $consignment->user_id = Auth::id();
         $consignment->delete();
 
         return redirect()->route('laporan.index');
@@ -142,7 +142,7 @@ class ConsignmentController extends Controller
     }
 
     public function mainpageSearch(Request $request)
-{
+    {
     $search = $request->input('search');
 
     $consignments = Consignment::with('product', 'store')
@@ -165,6 +165,6 @@ class ConsignmentController extends Controller
             ];
         });
 
-    return view('home.home', compact('consignments', 'search'));
-}
+        return view('home.home', compact('consignments', 'search'));
+    }
 }

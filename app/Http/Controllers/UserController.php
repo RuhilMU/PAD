@@ -11,11 +11,11 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data_user = User::all();
-
-        return view('manajemen.pegawai', compact('data_user'));
+        $perPage = $request->input('per_page', 1);
+        $data_user = User::all()->paginate($perPage);
+        return view('manajemen.pegawai', compact('data_user','perPage'));
     }
 
     /**
