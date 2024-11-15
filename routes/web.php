@@ -12,6 +12,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ConsignmentController::class, 'mainpageIndex'])->name('mainpage.index');
     Route::get('/dashboard/search', [ConsignmentController::class, 'mainpageSearch'])->name('mainpage.search');
+    
     Route::get('/transaksi', [ConsignmentController::class, 'laporanIndex'])->name('laporan.index');
     Route::get('/transaksi/tambah', [ConsignmentController::class, 'laporanCreate'])->name('laporan.create');
     Route::post('/transaksi', [ConsignmentController::class, 'laporanStore'])->name('laporan.store');
@@ -26,7 +27,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/pegawai/{user_id}', [UserController::class, 'destroy'])->name('pegawai.destroy');
         Route::get('/pegawai/edit/{user_id}', [UserController::class, 'edit'])->name('pegawai.edit');
         Route::post('/pegawai/update/{user_id}', [UserController::class, 'update'])->name('pegawai.update');
-        Route::get('/pegawai', [UserController::class, 'search'])->name('pegawai.search');
+        Route::get('/pegawai/search', [UserController::class, 'search'])->name('pegawai.search');
 
         Route::get('/barang', [ExpenseController::class, 'index'])->name('barang.index');
         Route::get('/barang/create', [ExpenseController::class, 'create'])->name('barang.create');
@@ -46,9 +47,9 @@ Route::get('/unduh', function () {
 //     return view('home.home');
 // });
 
-Route::get('/transaksi', function () {
-    return view('transaksi.transaksi');
-});
+// Route::get('/transaksi', function () {
+//     return view('transaksi.transaksi');
+// });
 
 // Route::get('/tambah-transaksi', function () {
 //     return view('transaksi.tambah');
