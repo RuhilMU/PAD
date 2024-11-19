@@ -13,6 +13,15 @@
             <h1 class="text-center font-bold leading-tight tracking-tight text-white md:text-2xl">
                 Edit Transaksi
             </h1>
+            @if ($errors->any())
+                <div class="alert alert-danger p-2 mb-2 text-red-900 bg-red-300 rounded-lg">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form class="space-y-4 md:space-y-6 px-10" method="POST" action="{{ route('laporan.update', $consignment->consignment_id) }}">
                 @csrf
 

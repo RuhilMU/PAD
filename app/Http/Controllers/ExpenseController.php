@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -42,7 +40,6 @@ class ExpenseController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'date' => $request->date,
-            'user_id' => Auth::id(), 
         ]);
 
         return redirect('/barang')->with('success', 'Expense created successfully');
@@ -73,7 +70,6 @@ class ExpenseController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'date' => $request->date,
-            'user_id' => Auth::id(), 
         ]);
 
         return redirect('/barang');
