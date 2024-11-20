@@ -8,7 +8,7 @@
 @section('content')
 <section class="p-10">
     <!-- line chart -->
-    <div class="mx-auto drop-shadow-lg"><canvas id="acquisitions"></canvas></div>
+    <div class="mx-auto drop-shadow-lg"><canvas id="dailyReportChart"></canvas></div>
 
     <!-- tabel barang -->
     <div class="relative overflow-x-auto drop-shadow-lg sm:rounded-lg mx-auto mt-4">
@@ -127,77 +127,42 @@
 
 
 <script>
-    const data = [{
-            day: 1,
-            masuk: 55,
-            keluar: 50,
-            min: 0,
-            max: 100
-        },
-        {
-            day: 2,
-            masuk: 10,
-            keluar: 50
-        },
-        {
-            day: 3,
-            masuk: 32,
-            keluar: 50
-        },
-        {
-            day: 4,
-            masuk: 40,
-            keluar: 50
-        },
-        {
-            day: 5,
-            masuk: 30,
-            keluar: 50
-        },
-        {
-            day: 6,
-            masuk: 21,
-            keluar: 50
-        },
-        {
-            day: 7,
-            masuk: 55,
-            keluar: 50
-        }
-    ];
-
     document.addEventListener('DOMContentLoaded', () => {
-        new Chart(document.getElementById('acquisitions'), {
-            type: 'line',
-            data: {
-                labels: data.map(row => `Hari ${row.day}`),
-                datasets: [{
-                        label: 'Masuk',
-                        data: data.map(row => row.masuk),
-                        borderColor: '#20BB14',
-                        fill: false
+        const ctx = document.getElementById('dailyReportChart').getContext('2d');
+        fetch('/dashboard/daily-report')
+            .then(response => response.json())
+            .then(data => {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.map(row => ` ${row.day}`),
+                        datasets: [
+                            {
+                                label: 'Masuk',
+                                data: data.map(row => row.masuk),
+                                borderColor: '#20BB14',
+                                fill: false,
+                            },
+                            {
+                                label: 'Keluar',
+                                data: data.map(row => row.keluar),
+                                borderColor: '#E21F03',
+                                fill: false,
+                            },
+                        ],
                     },
-                    {
-                        label: 'Keluar',
-                        data: data.map(row => row.keluar),
-                        borderColor: '#E21F03',
-                        fill: false
+                    options: {
+                        animation: {
+                            duration: 1000, 
+                            easing: 'easeOutBounce' 
+                        },
+                        hover: {
+                            animationDuration: 500 
+                        }
                     },
-                    {
-                        label: 'Min',
-                        data: data.map(row => row.min),
-                        borderColor: 'white',
-                        fill: false
-                    },
-                    {
-                        label: 'Max',
-                        data: data.map(row => row.max),
-                        borderColor: 'white',
-                        fill: false
-                    }
-                ]
-            }
-        });
+                });
+            })
+            .catch(error => console.error('Error loading data:', error));
     });
 </script>
 
