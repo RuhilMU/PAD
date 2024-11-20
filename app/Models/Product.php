@@ -17,11 +17,6 @@ class Product extends Model
 
     public function consignments()
     {
-        return $this->hasMany(Consignment::class);
-    }
-
-    public function sales()
-    {
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(Consignment::class, 'product_id', 'product_id');
     }
 }
