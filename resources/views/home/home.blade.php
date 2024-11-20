@@ -10,7 +10,7 @@
 
 <div class="flex items-center justify-center">
     <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5 transition-transform duration-300 ease-in-out hover:scale-105">
-        <a href="/transaksi"><canvas id="harian"></canvas>
+        <a href="/transaksi"> <canvas id="dailyReportChart"></canvas>
         </a>
     </div>
 </div>
@@ -75,86 +75,42 @@
 </div>
 
 <script>
-    const data_harian = [{
-            day: 1,
-            masuk: 55,
-            keluar: 50,
-            min: 0,
-            max: 100
-        },
-        {
-            day: 2,
-            masuk: 10,
-            keluar: 50
-        },
-        {
-            day: 3,
-            masuk: 32,
-            keluar: 50
-        },
-        {
-            day: 4,
-            masuk: 40,
-            keluar: 50
-        },
-        {
-            day: 5,
-            masuk: 30,
-            keluar: 50
-        },
-        {
-            day: 6,
-            masuk: 21,
-            keluar: 50
-        },
-        {
-            day: 7,
-            masuk: 55,
-            keluar: 50
-        }
-    ];
-
     document.addEventListener('DOMContentLoaded', () => {
-        new Chart(document.getElementById('harian'), {
-            type: 'line',
-            data: {
-                labels: data_harian.map(row => `${row.day}`),
-                datasets: [{
-                        label: 'Masuk',
-                        data: data_harian.map(row => row.masuk),
-                        borderColor: '#20BB14',
-                        fill: false
+        const ctx = document.getElementById('dailyReportChart').getContext('2d');
+        fetch('/dashboard/daily-report')
+            .then(response => response.json())
+            .then(data => {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.map(row => ` ${row.day}`),
+                        datasets: [
+                            {
+                                label: 'Masuk',
+                                data: data.map(row => row.masuk),
+                                borderColor: '#20BB14',
+                                fill: false,
+                            },
+                            {
+                                label: 'Keluar',
+                                data: data.map(row => row.keluar),
+                                borderColor: '#E21F03',
+                                fill: false,
+                            },
+                        ],
                     },
-                    {
-                        label: 'Keluar',
-                        data: data_harian.map(row => row.keluar),
-                        borderColor: '#E21F03',
-                        fill: false
+                    options: {
+                        animation: {
+                            duration: 1000, 
+                            easing: 'easeOutBounce' 
+                        },
+                        hover: {
+                            animationDuration: 500 
+                        }
                     },
-                    {
-                        label: 'Min',
-                        data: data_harian.map(row => row.min),
-                        borderColor: 'white',
-                        fill: false
-                    },
-                    {
-                        label: 'Max',
-                        data: data_harian.map(row => row.max),
-                        borderColor: 'white',
-                        fill: false
-                    }
-                ]
-            },
-            options: {
-                animation: {
-                    duration: 1000, // The duration of the initial animation
-                    easing: 'easeOutBounce' // The easing function for animation
-                },
-                hover: {
-                    animationDuration: 500 // Animation duration for hover effect
-                }
-            }
-        });
+                });
+            })
+            .catch(error => console.error('Error loading data:', error));
     });
 </script>
 @endsection

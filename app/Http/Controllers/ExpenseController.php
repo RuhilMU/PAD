@@ -32,7 +32,7 @@ class ExpenseController extends Controller
     {
         $request->validate([
             'description' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required|integer',
             'date' => 'required|date',
         ]);
 
@@ -61,7 +61,7 @@ class ExpenseController extends Controller
     {
         $request->validate([
             'description' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required|integer',
             'date' => 'required|date',
         ]);
 

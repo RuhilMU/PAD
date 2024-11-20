@@ -80,13 +80,24 @@ class ConsignmentController extends Controller
 
     public function laporanUpdate(Request $request, $consignment_id)
     {
+        $consignment = Consignment::with(['store', 'product'])->findOrFail($consignment_id);
+
         $request->validate([
             'store_name' => 'required|string',
             'product_name' => 'required|string',
             'entry_date' => 'required|date',
             'exit_date' => 'required|date',
             'price' => 'required|integer',
-            'sold' => 'required|integer',
+            'sold' => [
+                        'required',
+                        'integer',
+                        'min:0',
+                        function ($attribute, $value, $fail) use ($consignment) {
+                            if ($value > $consignment->quantity) {
+                                $fail("Stock Tidak Sebanyak Yang Terjual");
+                            }
+                        },
+                    ],
             'quantity' => 'required|integer',
         ]);
 

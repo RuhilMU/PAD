@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExpenseController;
+USE App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ConsignmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +13,14 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ConsignmentController::class, 'mainpageIndex'])->name('mainpage.index');
     Route::get('/dashboard/search', [ConsignmentController::class, 'mainpageSearch'])->name('mainpage.search');
-    
+
+    Route::get('/dashboard/daily-report', [KeuanganController::class, 'getDailyReport']);
+    Route::get('/mingguan/weekly-report', [KeuanganController::class, 'getWeeklyReport']);
+    Route::get('/bulanan/monthly-report', [KeuanganController::class, 'getMonthlyReport']);
+    Route::get('/riwayat/yearly-report', [KeuanganController::class, 'getYearlyReport']);
+    Route::get('/riwayat/product-percentage', [KeuanganController::class, 'getProductsPercentage']);
+    Route::get('/riwayat', [KeuanganController::class, 'getOmsetAndProfit']);
+
     Route::get('/transaksi', [ConsignmentController::class, 'laporanIndex'])->name('laporan.index');
     Route::get('/transaksi/tambah', [ConsignmentController::class, 'laporanCreate'])->name('laporan.create');
     Route::post('/transaksi', [ConsignmentController::class, 'laporanStore'])->name('laporan.store');
@@ -67,9 +75,9 @@ Route::get('/bulanan', function () {
     return view('laporan.bulanan');
 });
 
-Route::get('/riwayat', function () {
-    return view('laporan.riwayat');
-});
+// Route::get('/riwayat', function () {
+//     return view('laporan.riwayat');
+// });
 
 // Route::get('/barang', function () {
 //     return view('barang.barang');
