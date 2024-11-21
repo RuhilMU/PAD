@@ -24,15 +24,15 @@
                 </div>
             </form>
             @if (!empty($cari))
-                @if (count($data_user))
-                    <div class="alert alert-success">
-                        Ditemukan <strong>{{ count($data_user) }}</strong> user dengan kata: <h4>{{ $cari }}</h4>
-                    </div>
-                @else
-                    <div class="alert alert-warning">
-                        <h4>User {{ $cari }} tidak ditemukan</h4>
-                    </div>
-                @endif
+            @if (count($data_user))
+            <div class="alert alert-success">
+                Ditemukan <strong>{{ count($data_user) }}</strong> user dengan kata: <h4>{{ $cari }}</h4>
+            </div>
+            @else
+            <div class="alert alert-warning">
+                <h4>User {{ $cari }} tidak ditemukan</h4>
+            </div>
+            @endif
             @endif
         </div>
     </div>
@@ -88,23 +88,27 @@
             @endforeach
         </tbody>
     </table>
-        <form method="GET" action="{{ route('pegawai.index') }}" class="mb-4">
-            <label for="per_page">Items per page:</label>
-                <select name="per_page" id="per_page" onchange="this.form.submit()">
-                    <option value="1" {{ request('per_page') == 1 ? 'selected' : '' }}>1</option>
-                    <option value="5" {{ request('per_page') == 5 ? 'selected' : '' }}>5</option>
-                    <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
-                    <option value="15" {{ request('per_page') == 15 ? 'selected' : '' }}>15</option>
-                    <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
-                    <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
-                    <option value="30" {{ request('per_page') == 30 ? 'selected' : '' }}>30</option>
-                    <option value="35" {{ request('per_page') == 35 ? 'selected' : '' }}>35</option>
-                    <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
-                    <option value="45" {{ request('per_page') == 45 ? 'selected' : '' }}>45</option>
-                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
-                </select>
+    <div class="flex justify-between bg-[#E8E8E8]">
+        <form method="GET" action="{{ route('pegawai.index') }}" class="flex items-center mt-1 ml-2">
+            <label for="per_page" class="block text-sm font-medium text-gray-700 pr-2">Items per page:</label>
+            <select name="per_page" id="per_page" class="mt-1 block text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" onchange="this.form.submit()">
+                <option value="1" {{ request('per_page') == 1 ? 'selected' : '' }}>1</option>
+                <option value="5" {{ request('per_page') == 5 ? 'selected' : '' }}>5</option>
+                <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
+                <option value="15" {{ request('per_page') == 15 ? 'selected' : '' }}>15</option>
+                <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
+                <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+                <option value="30" {{ request('per_page') == 30 ? 'selected' : '' }}>30</option>
+                <option value="35" {{ request('per_page') == 35 ? 'selected' : '' }}>35</option>
+                <option value="40" {{ request('per_page') == 40 ? 'selected' : '' }}>40</option>
+                <option value="45" {{ request('per_page') == 45 ? 'selected' : '' }}>45</option>
+                <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+            </select>
         </form>
-        <div>{{ $data_user->links('pagination::bootstrap-5') }}</div>
+        <div class="mt-2 mr-2">
+            {{ $data_user->links('pagination::tailwind') }}
+        </div>
+    </div>
 </div>
 
 <script>
