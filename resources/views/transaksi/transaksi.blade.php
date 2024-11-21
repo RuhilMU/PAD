@@ -52,34 +52,34 @@
 
             {{-- Ini nanti isi pakai data dummy aja --}}
             <tbody>
-            @foreach ($consignments as $consignment)
+                @foreach ($consignments as $consignment)
                 <tr class="bg-[#E3ECFF] border-b">
                     <td class="px-3 py-1">
-                    {{ $consignment['store_name'] }}
+                        {{ $consignment['store_name'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['product_name'] }}
+                        {{ $consignment['product_name'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['status'] }}
+                        {{ $consignment['status'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['circulation_duration'] }}
+                        {{ $consignment['circulation_duration'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['entry_date'] }}
+                        {{ $consignment['entry_date'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['exit_date'] }}
+                        {{ $consignment['exit_date'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ 'Rp ' . number_format($consignment['price']  , 2, ',', '.') }}
+                        {{ 'Rp ' . number_format($consignment['price']  , 2, ',', '.') }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['quantity'] }}
+                        {{ $consignment['quantity'] }}
                     </td>
                     <td class="px-3 py-1">
-                    {{ $consignment['sold'] }}
+                        {{ $consignment['sold'] }}
                     </td>
                     <td class="flex items-center px-3 py-1">
                         <a href="{{ route('laporan.edit', $consignment['consignment_id']) }}" class="bg-white border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
@@ -104,9 +104,10 @@
                 @endforeach
             </tbody>
         </table>
-        <form method="GET" action="{{ route('laporan.index') }}" class="mb-4">
-            <label for="per_page">Items per page:</label>
-                <select name="per_page" id="per_page" onchange="this.form.submit()">
+        <div class="flex justify-between">
+            <form method="GET" action="{{ route('laporan.index') }}" class="flex items-center mt-1 ml-2">
+                <label for="per_page" class="block text-sm font-medium text-gray-700 pr-2">Items per page:</label>
+                <select name="per_page" id="per_page" class="mt-1 block text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" onchange="this.form.submit()">
                     <option value="1" {{ request('per_page') == 1 ? 'selected' : '' }}>1</option>
                     <option value="5" {{ request('per_page') == 5 ? 'selected' : '' }}>5</option>
                     <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
@@ -119,8 +120,12 @@
                     <option value="45" {{ request('per_page') == 45 ? 'selected' : '' }}>45</option>
                     <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
                 </select>
-        </form>
-        <div>{{ $consignments->links('pagination::bootstrap-5') }}</div>
+            </form>
+
+            <div class="mt-2 mr-2">
+                {{ $consignments->links('pagination::tailwind') }}
+            </div>
+        </div>
     </div>
 </section>
 
@@ -136,8 +141,7 @@
                     type: 'line',
                     data: {
                         labels: data.map(row => ` ${row.day}`),
-                        datasets: [
-                            {
+                        datasets: [{
                                 label: 'Masuk',
                                 data: data.map(row => row.masuk),
                                 borderColor: '#20BB14',
@@ -153,11 +157,11 @@
                     },
                     options: {
                         animation: {
-                            duration: 1000, 
-                            easing: 'easeOutBounce' 
+                            duration: 1000,
+                            easing: 'easeOutBounce'
                         },
                         hover: {
-                            animationDuration: 500 
+                            animationDuration: 500
                         }
                     },
                 });
