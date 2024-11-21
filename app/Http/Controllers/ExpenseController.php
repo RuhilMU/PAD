@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Expense;
 use Illuminate\Http\Request;
+use PDF;
 
 class ExpenseController extends Controller
 {
@@ -84,5 +85,32 @@ class ExpenseController extends Controller
         $expense->delete();
 
         return redirect('/barang');
+    }
+
+    public function pageunduh()
+    {
+        return view('barang.unduh');
+    }
+
+    public function download(Request $request)
+    {
+        $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        $expenses = Expense::whereBetween('date', [$request->start_date, $request->end_date])
+            ->orderBy('date', 'asc')
+            ->get();
+
+        $data = [
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'expenses' => $expenses,
+        ];
+
+        $pdf = PDF::loadView('barang.pdf', $data);
+
+        return $pdf->download('pengeluaran_periode_' . $request->start_date . '_-_' . $request->end_date . '.pdf');
     }
 }
