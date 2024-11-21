@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = $request->input('per_page', 1);
+        $perPage = $request->input('per_page', 10);
         $data_user = User::paginate($perPage);
         return view('manajemen.pegawai', compact('data_user','perPage'));
     }
