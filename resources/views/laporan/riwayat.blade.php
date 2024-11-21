@@ -77,13 +77,25 @@
                         datasets: [{
                             data: data_product.map(row => row.jual),
                             backgroundColor: colors,
-                        },
-                        ],
+                        }],
                     },
+                    options: {
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const value = context.raw || 0;
+                                        return `${value}%`; 
+                                    }
+                                }
+                            }
+                        }
+                    }
                 });
             })
             .catch(error => console.error('Error loading data:', error));
     });
+
 
     function generateRandomColors(count) {
     const colors = [];

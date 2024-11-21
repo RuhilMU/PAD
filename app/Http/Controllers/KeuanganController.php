@@ -10,6 +10,16 @@ use Carbon\Carbon;
 
 class KeuanganController extends Controller
 {   
+    public function mingguanIndex()
+    {
+        return view('laporan.mingguan');
+    }    
+
+    public function bulananIndex()
+    {
+        return view('laporan.bulanan');
+    }
+
     public function getDailyReport()
         {
             $startOfWeek = Carbon::now()->startOfWeek(Carbon::MONDAY);
