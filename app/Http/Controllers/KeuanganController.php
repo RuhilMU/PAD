@@ -106,15 +106,15 @@ class KeuanganController extends Controller
 
         public function getYearlyReport()
         {
-            $firstYearConsignment = Consignment::min('exit_date') ? Carbon::parse(Consignment::min('exit_date'))->year : now()->year;
+            $firstYearConsignment = Consignment::min('entry_date') ? Carbon::parse(Consignment::min('entry_date'))->year : now()->year;
             $firstYearExpense = Expense::min('date') ? Carbon::parse(Expense::min('date'))->year : now()->year;
             $firstYear = min($firstYearConsignment, $firstYearExpense);
     
-            $lastYearConsignment = Consignment::max('exit_date') ? Carbon::parse(Consignment::max('exit_date'))->year : now()->year;
+            $lastYearConsignment = Consignment::max('entry_date') ? Carbon::parse(Consignment::max('entry_date'))->year : now()->year;
             $lastYearExpense = Expense::max('date') ? Carbon::parse(Expense::max('date'))->year : now()->year;
             $lastYear = max($lastYearConsignment, $lastYearExpense);
     
-            $incomes = Consignment::selectRaw('YEAR(exit_date) as year, SUM(income) as total_income')
+            $incomes = Consignment::selectRaw('YEAR(entry_date) as year, SUM(income) as total_income')
                 ->groupBy('year')
                 ->get();
     

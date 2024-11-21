@@ -15,7 +15,7 @@ class ConsignmentController extends Controller
 {
     public function laporanIndex(Request $request)
     {
-        $perPage = $request->input('per_page', 1);
+        $perPage = $request->input('per_page', 10);
         $consignments = Consignment::with('product', 'store')
         ->paginate($perPage);
         $consignments->getCollection()->transform(function ($consignment) {

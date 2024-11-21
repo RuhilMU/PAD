@@ -12,7 +12,7 @@ class ExpenseController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = $request->input('per_page', 1);
+        $perPage = $request->input('per_page', 10);
         $data_keluar = Expense::with('user')->paginate($perPage);;
         return view('barang.barang', compact('data_keluar', 'perPage'));
     }
