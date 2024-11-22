@@ -65,7 +65,7 @@
                     ********
                 </td>
 
-                <td class="flex items-center px-3 py-1">
+                <td class="flex items-center px-3 py-1 justify-end">
                     <a href="{{ route('pegawai.edit', $user->user_id) }}" class="border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="#B3BE1A" fill-rule="evenodd" d="M17.204 10.793L19 9c.545-.545.818-.818.934-1.112a2 2 0 0 0 0-1.773C19.818 5.818 19.545 5.545 19 5s-.818-.818-1.112-.934a2 2 0 0 0-1.773 0c-.294.143-.537.419-1.112.934l-1.819 1.819a10.9 10.9 0 0 0 4.023 3.977m-5.477-2.523l-3.87 3.87c-.423.423-.338.338-.778.9c-.14.23-.199.555-.313 1.145l-.313 3.077c-.03.332-.1.498-.005.593s.23.031.593-.005l3.077-.313c.59-.117.885-.173 1.143-.313s.473-.352.898-.777l3.89-3.89a12.9 12.9 0 0 1-4.02-3.98" clip-rule="evenodd" />

@@ -56,9 +56,16 @@
                                 data: data_tahunan.map(row => row.keluar),
                                 borderColor: '#E21F03',
                                 fill: false
-                            },
+                            }
                         ],
                     },
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
                 });
             })
             .catch(error => console.error('Error loading data:', error));
@@ -81,6 +88,9 @@
                     },
                     options: {
                         plugins: {
+                            legend: {
+                                display: false
+                            },
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {

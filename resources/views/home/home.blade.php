@@ -89,17 +89,22 @@
                                 label: 'Masuk',
                                 data: data.map(row => row.masuk),
                                 borderColor: '#20BB14',
-                                fill: false,
+                                fill: false
                             },
                             {
                                 label: 'Keluar',
                                 data: data.map(row => row.keluar),
                                 borderColor: '#E21F03',
-                                fill: false,
+                                fill: false
                             },
                         ],
                     },
                     options: {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
                         animation: {
                             duration: 1000, 
                             easing: 'easeOutBounce' 

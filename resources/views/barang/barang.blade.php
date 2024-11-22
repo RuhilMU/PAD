@@ -50,7 +50,7 @@
                 <td class="px-3 py-1">
                     {{ $expense->description }}
                 </td>
-                <td class="flex items-center px-3">
+                <td class="flex items-center px-3 justify-end">
                     <a href="{{ route('barang.edit', $expense->expense_id) }}" class="border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="#B6BE1A" fill-rule="evenodd" d="M17.204 10.796L19 9c.545-.545.818-.818.964-1.112a2 2 0 0 0 0-1.776C19.818 5.818 19.545 5.545 19 5s-.818-.818-1.112-.964a2 2 0 0 0-1.776 0c-.294.146-.567.419-1.112.964l-1.819 1.819a10.9 10.9 0 0 0 4.023 3.977m-5.477-2.523l-6.87 6.87c-.426.426-.638.638-.778.9c-.14.26-.199.555-.316 1.145l-.616 3.077c-.066.332-.1.498-.005.593s.26.061.593-.005l3.077-.616c.59-.117.885-.176 1.146-.316s.473-.352.898-.777l6.89-6.89a12.9 12.9 0 0 1-4.02-3.98" clip-rule="evenodd" />
@@ -59,7 +59,7 @@
                     <form action="{{ route('barang.destroy', $expense->expense_id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="border-2 border-[#A3A3A3] rounded p-1 hover:bg-red-100 ml-1" title="Delete">
+                        <button type="submit" class="border-2 border-[#A3A3A3] rounded p-1 hover:bg-red-100 ml-1 mt-1" title="Delete">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <g fill="none">
                                     <path fill="#C50505" fill-rule="evenodd" d="M21 6H3v3a2 2 0 0 1 2 2v4c0 2.828 0 4.243.879 5.121C6.757 21 8.172 21 11 21h2c2.829 0 4.243 0 5.121-.879c.88-.878.88-2.293.88-5.121v-4a2 2 0 0 1 2-2zm-10.5 5a1 1 0 0 0-2 0v5a1 1 0 1 0 2 0zm5 0a1 1 0 0 0-2 0v5a1 1 0 1 0 2 0z" clip-rule="evenodd" />
