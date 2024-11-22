@@ -6,7 +6,7 @@
     <title>Home</title>
 </head>
 
-<!-- 1 diagram -->
+<!-- line chart -->
 
 <div class="flex items-center justify-center">
     <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5 transition-transform duration-300 ease-in-out hover:scale-105">
