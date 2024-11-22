@@ -35,6 +35,13 @@
                             },
                         ],
                     },
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
                 });
             })
             .catch(error => console.error('Error loading data:', error));
