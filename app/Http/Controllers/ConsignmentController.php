@@ -51,8 +51,8 @@ class ConsignmentController extends Controller
         return view('transaksi.tambah');
     }
 
-        public function laporanStore(Request $request)
-        {
+    public function laporanStore(Request $request)
+    {
             $request->validate([
                 'product_name' => 'required|string',
                 'store_name' => 'required|string',
