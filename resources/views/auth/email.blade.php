@@ -6,6 +6,7 @@
     <title>Reset Password</title>
 </head>
 
+<!-- form masukkan email -->
 <section>
     <div class="bg-[#F4F1E6] flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
@@ -17,7 +18,23 @@
                 <h1 class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                     Masukkan Email
                 </h1>
-                <form class="space-y-4 md:space-y-6" method="POST">
+                @if (session('status'))
+                <div class="alert alert-success p-2 mb-2 text-green-900 bg-green-300 rounded-lg">
+                    {{ session('status') }}
+                </div>
+                @endif
+
+                @if ($errors->any())
+                <div class="alert alert-danger p-2 mb-2 text-red-900 bg-red-300 rounded-lg">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('password.email') }}">
                     @csrf
                     <input type="hidden" name="token">
                     <div>

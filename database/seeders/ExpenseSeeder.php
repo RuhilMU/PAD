@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\Expense;
 
 
-class UserSeeder extends Seeder
+class ExpenseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         for ($i = 0; $i < 10; $i++) {
-            User::create([
-                'role' => 'pegawai',
-                'email' => fake()->email(),
-                'name' => fake()->name(),
-                'password' => fake()->password(),
+            Expense::create([
+                'description' => fake()->sentence(3),
+                'amount' => fake()->numberBetween(50000,200000),
+                'date' => fake()->date()
             ]);
         }
     }

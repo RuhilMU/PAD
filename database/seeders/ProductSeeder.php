@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
 
-
-class UserSeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +14,9 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         for ($i = 0; $i < 10; $i++) {
-            User::create([
-                'role' => 'pegawai',
-                'email' => fake()->email(),
-                'name' => fake()->name(),
-                'password' => fake()->password(),
+            Product::create([
+                'product_name' => fake()->sentence(1),
+                'price' => fake()->numberBetween(3000,50000),
             ]);
         }
     }

@@ -6,14 +6,16 @@
     <title>Home</title>
 </head>
 
-<!-- 1 diagram -->
+<!-- line chart -->
 
 <div class="flex items-center justify-center">
-    <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5"><canvas id="harian"></canvas></div>
+    <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5 transition-transform duration-300 ease-in-out hover:scale-105">
+        <a href="/transaksi"> <canvas id="dailyReportChart"></canvas>
+        </a>
+    </div>
 </div>
-
 <!-- tabel barang titipan -->
-<div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4">
+<div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4 mb-10">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <span class="col p-6 items-center" style="color: #161D6F;font-weight:bold; font-size:16px">Monitoring Barang</span>
         <div class="relative mr-5">
@@ -23,10 +25,21 @@
                 </svg>
             </div>
             <form action="{{ route('mainpage.search') }}" method="GET">
-                <input type="text" name="search" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-40 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
+                <input type="text" name="search" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-56 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search">
             </form>
         </div>
     </div>
+            @if (!empty($search))
+                @if (count($consignments) > 0)
+                    <div class="alert alert-success">
+                        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
+                    </div>
+                @else
+                    <div class="alert alert-warning">
+                        <h4>Data {{ $search }} tidak ditemukan</h4>
+                    </div>
+                @endif
+            @endif
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-white uppercase bg-[#161D6F]">
             <tr>
@@ -62,77 +75,47 @@
 </div>
 
 <script>
-    const data_harian = [{
-            day: 1,
-            masuk: 55,
-            keluar: 50,
-            min: 0,
-            max: 100
-        },
-        {
-            day: 2,
-            masuk: 10,
-            keluar: 50
-        },
-        {
-            day: 3,
-            masuk: 32,
-            keluar: 50
-        },
-        {
-            day: 4,
-            masuk: 40,
-            keluar: 50
-        },
-        {
-            day: 5,
-            masuk: 30,
-            keluar: 50
-        },
-        {
-            day: 6,
-            masuk: 21,
-            keluar: 50
-        },
-        {
-            day: 7,
-            masuk: 55,
-            keluar: 50
-        }
-    ];
-
     document.addEventListener('DOMContentLoaded', () => {
-        new Chart(document.getElementById('harian'), {
-            type: 'line',
-            data: {
-                labels: data_harian.map(row => `${row.day}`),
-                datasets: [{
-                        label: 'Masuk',
-                        data: data_harian.map(row => row.masuk),
-                        borderColor: '#20BB14',
-                        fill: false
+        const ctx = document.getElementById('dailyReportChart').getContext('2d');
+        fetch('/dashboard/daily-report')
+            .then(response => response.json())
+            .then(data => {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.map(row => ` ${row.day}`),
+                        datasets: [
+                            {
+                                label: 'Masuk',
+                                data: data.map(row => row.masuk),
+                                borderColor: '#20BB14',
+                                fill: false
+                            },
+                            {
+                                label: 'Keluar',
+                                data: data.map(row => row.keluar),
+                                borderColor: '#E21F03',
+                                fill: false
+                            },
+                        ],
                     },
-                    {
-                        label: 'Keluar',
-                        data: data_harian.map(row => row.keluar),
-                        borderColor: '#E21F03',
-                        fill: false
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        animation: {
+                            duration: 1000, 
+                            easing: 'easeOutBounce' 
+                        },
+                        hover: {
+                            animationDuration: 500 
+                        }
                     },
-                    {
-                        label: 'Min',
-                        data: data_harian.map(row => row.min),
-                        borderColor: 'white',
-                        fill: false
-                    },
-                    {
-                        label: 'Max',
-                        data: data_harian.map(row => row.max),
-                        borderColor: 'white',
-                        fill: false
-                    }
-                ]
-            }
-        });
+                });
+            })
+            .catch(error => console.error('Error loading data:', error));
     });
 </script>
 @endsection

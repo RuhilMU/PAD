@@ -13,6 +13,8 @@
                 alt="logo">
             <span class="font-bold">Web Pengelola Keuangan</span>
         </a>
+
+        <!-- form login -->
         <div
             class="bg-[#B0C4DE] drop-shadow-lg w-full rounded-full shadow md:mt-0 sm:max-w-md xl:p-0">
             <div class="p-6 rounded-3xl space-y-4 md:space-y-6 sm:p-8">
@@ -20,6 +22,15 @@
                     class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                     Login
                 </h1>
+                @if ($errors->any())
+                <div class="alert alert-danger p-2 mb-2 text-red-900 bg-red-300 rounded-lg">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <form class="space-y-4 md:space-y-6" action="{{ route('login') }}" method="POST">
                     @csrf
                     <div>

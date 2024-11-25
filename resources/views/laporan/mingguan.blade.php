@@ -6,68 +6,45 @@
 </head>
 
 @section('content')
-    <section class="p-20 drop-shadow-lg">
-        <div class="mx-auto"><canvas id="mingguan"></canvas></div>
-    </section>
-
+<section class="p-20 drop-shadow-lg">
+    <div class="mx-auto"><canvas id="weeklyReportChart"></canvas></div>
+</section>
 
 <script>
-    const data_mingguan = [{
-            week: 1,
-            masuk: 55,
-            keluar: 50,
-            min: 0,
-            max: 100
-        },
-        {
-            week: 2,
-            masuk: 10,
-            keluar: 50
-        },
-        {
-            week: 3,
-            masuk: 32,
-            keluar: 50
-        },
-        {
-            week: 4,
-            masuk: 40,
-            keluar: 50
-        }
-    ];
-
     document.addEventListener('DOMContentLoaded', () => {
-        new Chart(document.getElementById('mingguan'), {
-            type: 'line',
-            data: {
-                labels: data_mingguan.map(row => `${row.week}`),
-                datasets: [{
-                        label: 'Masuk',
-                        data: data_mingguan.map(row => row.masuk),
-                        borderColor: '#20BB14',
-                        fill: false
+        const ctx = document.getElementById('weeklyReportChart').getContext('2d');
+        fetch('/mingguan/weekly-report')
+            .then(response => response.json())
+            .then(data_mingguan => {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data_mingguan.map(row => `Week ${row.week}`),
+                        datasets: [
+                            {
+                                label: 'Masuk',
+                                data: data_mingguan.map(row => row.masuk),
+                                borderColor: '#20BB14',
+                                fill: false,
+                            },
+                            {
+                                label: 'Keluar',
+                                data: data_mingguan.map(row => row.keluar),
+                                borderColor: '#E21F03',
+                                fill: false,
+                            },
+                        ],
                     },
-                    {
-                        label: 'Keluar',
-                        data: data_mingguan.map(row => row.keluar),
-                        borderColor: '#E21F03',
-                        fill: false
-                    },
-                    {
-                        label: 'Min',
-                        data: data_mingguan.map(row => row.min),
-                        borderColor: 'white',
-                        fill: false
-                    },
-                    {
-                        label: 'Max',
-                        data: data_mingguan.map(row => row.max),
-                        borderColor: 'white',
-                        fill: false
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
                     }
-                ]
-            }
-        });
+                });
+            })
+            .catch(error => console.error('Error loading data:', error));
     });
 </script>
 

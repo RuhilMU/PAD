@@ -11,10 +11,11 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data_user = User::where('role', 'pegawai')->get();
-        return view('manajemen.pegawai', compact('data_user'));
+        $perPage = $request->input('per_page', 10);
+        $data_user = User::paginate($perPage);
+        return view('manajemen.pegawai', compact('data_user','perPage'));
     }
 
     /**
@@ -33,7 +34,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:5',
+            'password' => 'required|min:5|confirmed',
         ]);
         
             $user = new User();
@@ -71,15 +72,17 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:5',
+            'password' => 'nullable|min:5',
         ]);
 
             $user = User::find($user_id);
             $user->name = $request->name;
             $user->email = $request->email;
-            if ($request->password) {
+
+            if ($request->filled('password')) {
                 $user->password = Hash::make($request->password);
             }
+            
             $user->save();
 
         return redirect('/pegawai');
@@ -98,8 +101,13 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $cari = $request->nama;
-        $data_user = User::where('name', 'like', "%" . $cari . "%")->orwhere('email', 'like', "%" . $cari . "%")->get();
+        $data_user = User::where('name', 'like', "%" . $cari . "%")
+                        ->get();
         $jumlah_user = User::count();
-        return view('manajemen.pegawai', compact('data_user', 'cari', 'jumlah_user'));
+        return view('manajemen.pegawai', [
+            'data_user' => $data_user,
+            'cari' => $cari ?? null, 
+            'jumlah_user' => $jumlah_user,
+        ]);
     }
 }
