@@ -101,9 +101,13 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $cari = $request->nama;
+        $perPage = $request->input('per_page', 10); 
+
         $data_user = User::where('name', 'like', "%" . $cari . "%")
-                        ->get();
+                        ->paginate($perPage);
+
         $jumlah_user = User::count();
+
         return view('manajemen.pegawai', [
             'data_user' => $data_user,
             'cari' => $cari ?? null, 
