@@ -14,34 +14,69 @@ use Carbon\Carbon;
 class ConsignmentController extends Controller
 {
     public function laporanIndex(Request $request)
-    {
-        $perPage = $request->input('per_page', 10);
-        $consignments = Consignment::with('product', 'store')
+{
+    $perPage = $request->input('per_page', 10);
+
+    $consignments = Consignment::with('product', 'store')
+        ->orderByRaw("(entry_date IS NULL) DESC") 
+        ->orderBy('created_at', 'DESC') 
         ->paginate($perPage);
-        $consignments->getCollection()->transform(function ($consignment) {
-            $status = $consignment->entry_date ? 'Close' : 'Open';
-            $circulationDuration = $consignment->entry_date && $consignment->exit_date 
-                ? Carbon::parse($consignment->exit_date)->diffInDays(Carbon::parse($consignment->entry_date)) 
-                : null;
-            $totalPrice = $consignment->quantity * $consignment->product->price;
+
+    // $consignments->transform(function ($consignment) {
+    $consignments->getCollection()->transform(function ($consignment) {
+        $status = $consignment->entry_date ? 'Close' : 'Open';
+        $circulationDuration = $consignment->entry_date && $consignment->exit_date 
+            ? Carbon::parse($consignment->exit_date)->diffInDays(Carbon::parse($consignment->entry_date)) 
+            : null;
+        $totalPrice = $consignment->quantity * $consignment->product->price;
+
+        return [
+            'consignment_id' => $consignment->consignment_id,
+            'product_name' => $consignment->product->product_name,
+            'store_name' => $consignment->store->store_name,
+            'status' => $status,
+            'circulation_duration' => $circulationDuration,
+            'entry_date' => $consignment->entry_date,
+            'exit_date' => $consignment->exit_date,
+            'price' => $consignment->product->price,
+            'total_price' => $totalPrice,
+            'quantity' => $consignment->quantity,
+            'sold' => $consignment->sold,
+        ];
+    });
+
+    return view('transaksi.transaksi', compact('consignments'));
+}
+
+    // public function laporanIndex(Request $request)
+    // {
+    //     $perPage = $request->input('per_page', 10);
+    //     $consignments = Consignment::with('product', 'store')
+    //     ->paginate($perPage);
+    //     $consignments->getCollection()->transform(function ($consignment) {
+    //         $status = $consignment->entry_date ? 'Close' : 'Open';
+    //         $circulationDuration = $consignment->entry_date && $consignment->exit_date 
+    //             ? Carbon::parse($consignment->exit_date)->diffInDays(Carbon::parse($consignment->entry_date)) 
+    //             : null;
+    //         $totalPrice = $consignment->quantity * $consignment->product->price;
         
-            return [
-                'consignment_id' => $consignment->consignment_id,
-                'product_name' => $consignment->product->product_name,
-                'store_name' => $consignment->store->store_name,
-                'status' => $status,
-                'circulation_duration' => $circulationDuration,
-                'entry_date' => $consignment->entry_date,
-                'exit_date' => $consignment->exit_date,
-                'price' => $consignment->product->price,
-                'total_price' => $totalPrice,
-                'quantity' => $consignment->quantity,
-                'sold' => $consignment->sold,
-            ];
-        });
+    //         return [
+    //             'consignment_id' => $consignment->consignment_id,
+    //             'product_name' => $consignment->product->product_name,
+    //             'store_name' => $consignment->store->store_name,
+    //             'status' => $status,
+    //             'circulation_duration' => $circulationDuration,
+    //             'entry_date' => $consignment->entry_date,
+    //             'exit_date' => $consignment->exit_date,
+    //             'price' => $consignment->product->price,
+    //             'total_price' => $totalPrice,
+    //             'quantity' => $consignment->quantity,
+    //             'sold' => $consignment->sold,
+    //         ];
+    //     });
     
-        return view('transaksi.transaksi', compact('consignments'));
-    }
+    //     return view('transaksi.transaksi', compact('consignments'));
+    // }
 
     public function laporanEdit($consignment_id)
     {

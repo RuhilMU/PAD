@@ -14,37 +14,69 @@
 
         h1 {
             text-align: center;
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 0;
         }
 
-        p {
+        p.periode {
             text-align: center;
-            font-size: 12px;
-            margin-bottom: 20px;
+            font-size: 16px;
+            margin: 0; 
+            font-weight: bold;
+        }
+
+        p.tgl {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+            margin-bottom: 80px; 
+            font-weight: bold;
+            text-transform: uppercase; 
         }
 
         table {
-            width: 100%;
+            width: 80%; 
             border-collapse: collapse;
-            margin: 0 auto;
+            margin: 0 auto; 
+            font-family: Arial, sans-serif;
         }
 
         th, td {
             border: 1px solid #000;
-            padding: 4px 6px; 
-            text-align: center;
-            vertical-align: middle;
+            padding: 2px 4px; 
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #cccccc; 
             font-weight: bold;
-            font-size: 12px;
+            font-size: 16px; 
+            text-align: center;
         }
 
         td {
-            font-size: 12px;
+            font-size: 16px;
+        }
+
+
+        td.tanggal {
+            text-align: center;
+        }
+
+        td.harga, 
+        td.keterangan {
+            text-align: left;
+        }
+
+        colgroup col.keterangan {
+            width: 50%;
+        }
+
+        colgroup col.tanggal {
+            width: 25%;
+        }
+
+        colgroup col.harga {
+            width: 25%;
         }
 
         @page {
@@ -54,9 +86,15 @@
 </head>
 <body>
     <h1>DAFTAR BARANG</h1>
-    <p>PERIODE<br>{{ date('d M Y', strtotime($start_date)) }} - {{ date('d M Y', strtotime($end_date)) }}</p>
+    <p class="periode">PERIODE</p>
+    <p class="tgl">{{ date('j F Y', strtotime($start_date)) }} - {{ date('j F Y', strtotime($end_date)) }}</p>
 
     <table>
+        <colgroup>
+            <col class="tanggal">
+            <col class="harga">
+            <col class="keterangan">
+        </colgroup>
         <thead>
             <tr>
                 <th>Tanggal</th>
@@ -67,9 +105,9 @@
         <tbody>
             @forelse ($expenses as $expense)
                 <tr>
-                    <td>{{ date('d/m/Y', strtotime($expense->date)) }}</td>
-                    <td>Rp {{ number_format($expense->amount, 0, ',', '.') }}</td>
-                    <td>{{ $expense->description }}</td>
+                    <td class="tanggal">{{ date('d/m/Y', strtotime($expense->date)) }}</td>
+                    <td class="harga">Rp {{ number_format($expense->amount, 0, ',', '.') }}</td>
+                    <td class="keterangan">{{ $expense->description }}</td>
                 </tr>
             @empty
                 <tr>
