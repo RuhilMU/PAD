@@ -19,7 +19,8 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request): View
     {
-        return view('auth.reset-password', ['request' => $request]);
+        $email = $request->query('email'); 
+        return view('auth.reset', compact('email'));
     }
 
     /**
@@ -43,7 +44,6 @@ class NewPasswordController extends Controller
             function ($user) use ($request) {
                 $user->forceFill([
                     'password' => Hash::make($request->password),
-                    'remember_token' => Str::random(60),
                 ])->save();
 
                 event(new PasswordReset($user));

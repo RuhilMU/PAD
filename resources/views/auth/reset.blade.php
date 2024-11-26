@@ -19,9 +19,19 @@
                     <h1 class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                         Password Baru
                     </h1>
-                    <form class="space-y-4 md:space-y-6" method="POST">
+                    @if ($errors->any())
+                <div class="alert alert-danger p-2 mb-2 text-red-900 bg-red-300 rounded-lg">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                    <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('password.store') }}">
                         @csrf
-                        <input type="hidden" name="token">
+                        <input type="hidden" name="token" value="{{ request()->token }}">
+                        <input type="hidden" name="email" value="{{ $email }}">
                         <div>
                             <input type="password" name="password" id="password"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
