@@ -61,8 +61,7 @@ class ConsignmentController extends Controller
                 'store_name' => 'required|string',
                 'price' => 'required|integer',
                 'quantity' => 'required|integer',
-                'entry_date' => 'required|date',
-                'exit_date' => 'nullable|date',
+                'exit_date' => 'required|date'
             ]);
 
         $consignment = new Consignment();
