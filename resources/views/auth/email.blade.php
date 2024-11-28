@@ -13,7 +13,7 @@
             <img class="w-20 h-20 mr-2" src="src/Logo.png"
                 alt="logo">
         </a>
-        <div class="w-full rounded-full drop-shadow-lg sm:max-w-md xl:p-0">
+        <div class="w-full rounded-3xl drop-shadow-lg sm:max-w-md xl:p-0">
             <div class="p-6 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                     Masukkan Email
