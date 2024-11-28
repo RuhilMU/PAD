@@ -7,18 +7,18 @@
 </head>
 
 <!-- form memasukkan password -->
+
 <body>
-    <section>
         <div class="bg-[#F4F1E6] flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-                <img class="w-20 h-20 mr-2" src="src/Logo.png"
+                <img class="w-20 h-20 mr-2" src="{{ asset('src/Logo.png') }}"
                     alt="logo">
             </a>
-            <div class="w-full rounded-full drop-shadow-lg sm:max-w-md xl:p-0">
-                <div class="p-6 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
-                    <h1 class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                        Password Baru
-                    </h1>
+            <div class="bg-white w-full rounded-3xl drop-shadow-lg sm:max-w-md xl:p-0">
+              <div class="p-6 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
+                  <h1 class="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                      Password Baru
+                  </h1>
                     @if ($errors->any())
                 <div class="alert alert-danger p-2 mb-2 text-red-900 bg-red-300 rounded-lg">
                     <ul class="list-disc list-inside">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 
 @endsection

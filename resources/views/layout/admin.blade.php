@@ -13,8 +13,8 @@
 <nav class="bg-gradient-to-r from-[#161D6F] to-[#4854EB] max-w-screen flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
         <a href="/dashboard" class="flex items-center space-x-3 rtl:space-x-reverse mr-auto">
-            <img src="src/Logo.png" class="h-10" alt="Flowbite Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap">Web Pengelola Keuangan</span>
+            <img src="{{ asset('src/Logo.png') }}" class="h-10"/>
+            <span class="text-white self-center text-2xl font-semibold whitespace-nowrap">Web Pengelola Keuangan</span>
         </a>
     </div>
     <div class="flex items-center justify-between w-full md:flex md:w-auto" id="navbar-sticky">
