@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+//menangani validasi dan proses autentikasi untuk permintaan login, dan untuk memastikan proses login aman dan sesuai dengan aturan yang ditentukan.
 class LoginRequest extends FormRequest
 {
     /**

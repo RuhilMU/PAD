@@ -11,6 +11,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+// fungsi untuk menampilkan daftar akun user dengan pagination
     public function index(Request $request)
     {
         $perPage = $request->input('per_page', 10);
@@ -21,6 +22,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+// fungsi untuk menampilkan form untuk menambahkan akun user
     public function create()
     {
         return view('manajemen.create');
@@ -29,6 +31,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+// fungsi untuk menyimpan data akun user ke database
     public function store(Request $request)
     {
         $request->validate([
@@ -58,6 +61,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+// fungsi untuk menampilkan form untuk mengedit data akun user tertentu berdasarkan id
     public function edit($user_id)
     {
         $user = User::find($user_id);
@@ -67,6 +71,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
+// fungsi untuk memperbarui data akun user berdasarkan id di database
     public function update(Request $request, $user_id)
     {
         $request->validate([
@@ -91,6 +96,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+// fungsi untuk menghapus data akun user berdasarkan id dari database
     public function destroy($user_id)
     {
         $user = User::find($user_id);
@@ -98,6 +104,7 @@ class UserController extends Controller
         return redirect('/pegawai');
     }
 
+// fungsi untuk mencari akun user berdasarkan nama
     public function search(Request $request)
     {
         $cari = $request->nama;

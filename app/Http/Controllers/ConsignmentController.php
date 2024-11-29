@@ -13,6 +13,7 @@ use Carbon\Carbon;
 
 class ConsignmentController extends Controller
 {
+//fungsi untuk menampilkan daftar data consignment dengan paginasi
     public function laporanIndex(Request $request)
 {
     $perPage = $request->input('per_page', 10);
@@ -78,17 +79,20 @@ class ConsignmentController extends Controller
     //     return view('transaksi.transaksi', compact('consignments'));
     // }
 
+//fungsi untuk menampilkan halaman edit consignment berdasarkan ID
     public function laporanEdit($consignment_id)
     {
         $consignment = Consignment::find($consignment_id);
         return view('transaksi.edit', compact('consignment'));
     }
 
+//fungsi untuk menampilkan halaman tambah consignment
     public function laporanCreate()
     {
         return view('transaksi.tambah');
     }
 
+//fungsi untuk menyimpan data consignment baru ke dalam database
     public function laporanStore(Request $request)
     {
         $request->validate([
@@ -113,6 +117,7 @@ class ConsignmentController extends Controller
         return redirect('/transaksi');
     }
 
+//fungsi untuk mengupdate data consignment berdasarkan ID
     public function laporanUpdate(Request $request, $consignment_id)
     {
         $consignment = Consignment::with(['store', 'product'])->findOrFail($consignment_id);
@@ -157,7 +162,7 @@ class ConsignmentController extends Controller
         return redirect('/transaksi');
     }
 
-
+//fungsi untuk menghapus data consignment berdasarkan ID
     public function laporanDestroy($consignment_id)
     {
         $consignment = Consignment::findOrFail($consignment_id);
@@ -167,7 +172,7 @@ class ConsignmentController extends Controller
         return redirect()->route('laporan.index');
     }
     
-
+//fungsi untuk menampilkan daftar data consignment yang masih open
     public function mainpageIndex()
     {
         $consignments = Consignment::with('product', 'store')
@@ -185,7 +190,8 @@ class ConsignmentController extends Controller
 
         return view('home.home', compact('consignments'));
     }
-
+    
+//fungsi untuk mencari consignment berdasarkan nama produk atau nama toko
     public function mainpageSearch(Request $request)
     {
     $search = $request->input('search');
