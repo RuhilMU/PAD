@@ -9,17 +9,18 @@ use App\Models\Product;
 use Carbon\Carbon;
 
 class KeuanganController extends Controller
-{   
+{
+// fungsi untuk menampilkan halaman laporan mingguan
     public function mingguanIndex()
     {
         return view('laporan.mingguan');
     }    
-
+// fungsi untuk menampilkan halaman laporan bulanan
     public function bulananIndex()
     {
         return view('laporan.bulanan');
     }
-
+// fungsi untuk mendapatkan data laporan harian (pemasukan dan pengeluaran) selama satu minggu
     public function getDailyReport()
         {
             $startOfWeek = Carbon::now()->startOfWeek(Carbon::MONDAY);
@@ -54,7 +55,7 @@ class KeuanganController extends Controller
             return response()->json($dataHarian);
         }
     
-
+// fungsi untuk mendapatkan data laporan mingguan (pemasukan dan pengeluaran) selama satu bulan
     public function getWeeklyReport()
         {
             $startOfMonth = Carbon::now()->startOfMonth();
@@ -85,6 +86,7 @@ class KeuanganController extends Controller
             return response()->json($dataMingguan);
         }
 
+// fungsi untuk mendapatkan data laporan bulanan (pemasukan dan pengeluaran) selama satu tahun
         public function getMonthlyReport()
         {
             $currentYear = Carbon::now()->year;
@@ -114,6 +116,7 @@ class KeuanganController extends Controller
             return response()->json($dataBulanan);
         }
 
+// fungsi untuk mendapatkan data laporan tahunan (pemasukan dan pengeluaran)
         public function getYearlyReport()
         {
             $firstYearConsignment = Consignment::min('entry_date') ? Carbon::parse(Consignment::min('entry_date'))->year : now()->year;
@@ -147,6 +150,7 @@ class KeuanganController extends Controller
             return response()->json($dataTahunan);
         }
 
+// fungsi untuk mendapatkan data laporan produk yang terjual
         public function getProductsPercentage()
         {
             $dataProduk = Product::withSum('consignments as total_sold', 'sold')
@@ -164,7 +168,7 @@ class KeuanganController extends Controller
             return response()->json($salesPercentage);
         }
 
-
+// fungsi untuk mendapatkan data omset dan profit
         public function getOmsetAndProfit()
         {
             $total_omset = Consignment::sum('income');

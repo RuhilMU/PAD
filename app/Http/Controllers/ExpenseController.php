@@ -11,6 +11,7 @@ class ExpenseController extends Controller
     /**
      * Display a listing of the expenses.
      */
+// fungsi untuk menampilkan daftar pengeluaran dengan pagination
     public function index(Request $request)
     {
         $perPage = $request->input('per_page', 10);
@@ -21,6 +22,7 @@ class ExpenseController extends Controller
     /**
      * Show the form for creating a new expense.
      */
+// fungsi untuk menampilkan form untuk membuat pengeluaran
     public function create()
     {
         return view('barang.create');
@@ -29,6 +31,7 @@ class ExpenseController extends Controller
     /**
      * Store a newly created expense in storage.
      */
+// fungsi untuk menyimpan data pengeluaran ke database
     public function store(Request $request)
     {
         $request->validate([
@@ -49,6 +52,7 @@ class ExpenseController extends Controller
     /**
      * Show the form for editing the specified expense.
      */
+// fungsi untuk menampilkan form untuk mengedit data pengeluaran berdasarkan id
     public function edit($expense_id)
     {
         $expense = Expense::findOrFail($expense_id);
@@ -58,6 +62,7 @@ class ExpenseController extends Controller
     /**
      * Update the specified expense in storage.
      */
+// fungsi untuk memperbarui data pengeluaran berdasarkan id di database
     public function update(Request $request, $expense_id)
     {
         $request->validate([
@@ -79,6 +84,7 @@ class ExpenseController extends Controller
     /**
      * Remove the specified expense from storage.
      */
+// fungsi untuk menghapus data pengeluaran berdasarkan id dari database
     public function destroy($expense_id)
     {
         $expense = Expense::findOrFail($expense_id);
@@ -87,11 +93,13 @@ class ExpenseController extends Controller
         return redirect('/barang');
     }
 
+// fungsi untuk menampilkan tampilan form untuk menetapkan rentang tanggal data pengeluaran 
     public function pageunduh()
     {
         return view('barang.unduh');
     }
 
+// fungsi untuk mengunduh laporan pengeluaran dalam format PDF berdasarkan rentang tanggal
     public function download(Request $request)
     {
         $request->validate([

@@ -14,6 +14,7 @@ class Owner
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+// fungsi untuk memproses dan memastikan hanya user dengan role 'owner' yang dapat mengakses
     public function handle($request, Closure $next): Response
     {   
         if (Auth::check() && Auth::user()->role != 'owner') {
