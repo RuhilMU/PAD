@@ -1,16 +1,19 @@
 @extends('layout.laporan')
 @section('title laporan', 'LAPORAN KEUANGAN MINGGUAN')
 @section('dropdown', 'Mingguan')
+
 <head>
     <title>Mingguan</title>
 </head>
 
+<!-- line chart bulanan -->
 @section('content')
 <section class="p-20 drop-shadow-lg">
     <div class="mx-auto"><canvas id="weeklyReportChart"></canvas></div>
 </section>
 
 <script>
+    // logic untuk isi data pada line chart mingguan
     document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('weeklyReportChart').getContext('2d');
         fetch('/mingguan/weekly-report')
@@ -20,8 +23,7 @@
                     type: 'line',
                     data: {
                         labels: data_mingguan.map(row => `Week ${row.week}`),
-                        datasets: [
-                            {
+                        datasets: [{
                                 label: 'Masuk',
                                 data: data_mingguan.map(row => row.masuk),
                                 borderColor: '#20BB14',
@@ -47,5 +49,4 @@
             .catch(error => console.error('Error loading data:', error));
     });
 </script>
-
 @endsection

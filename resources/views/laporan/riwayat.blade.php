@@ -12,7 +12,7 @@
         <div class="grid grid-rows-2 gap-2 bg-[#F4F1E6] mr-3">
             <!-- profit -->
             <div class="bg-gradient-to-r from-[#77D670] to-[#A0EB9B] h-auto max-w-full py-3 mb-3 rounded-xl drop-shadow-lg col-span-1 text-center">
-                <h1 class="text-4xl text-white font-semibold py-3" >Profit</h2>
+                <h1 class="text-4xl text-white font-semibold py-3">Profit</h2>
                     <p class="text-6xl text-white font-bold py-3">{{ 'Rp ' . number_format($total_profit, 0, ',', '.') }}</p>
             </div>
             <!-- omset -->
@@ -44,8 +44,7 @@
                     type: 'line',
                     data: {
                         labels: data_tahunan.map(row => row.year),
-                        datasets: [
-                            {
+                        datasets: [{
                                 label: 'Masuk',
                                 data: data_tahunan.map(row => row.masuk),
                                 borderColor: '#20BB14',
@@ -95,7 +94,7 @@
                                 callbacks: {
                                     label: function(context) {
                                         const value = context.raw || 0;
-                                        return `${value}%`; 
+                                        return `${value}%`;
                                     }
                                 }
                             }
@@ -108,13 +107,12 @@
 
 
     function generateRandomColors(count) {
-    const colors = [];
-    for (let i = 0; i < count; i++) {
-        const color = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
-        colors.push(color);
-    }
-    return colors;
+        const colors = [];
+        for (let i = 0; i < count; i++) {
+            const color = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+            colors.push(color);
+        }
+        return colors;
     }
 </script>
-
 @endsection

@@ -7,6 +7,7 @@
 
 @section('content')
 
+<!-- form unduh data barang -->
 <section class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     <div class="w-full rounded-full sm:max-w-md xl:p-0">
         <div class="bg-gradient-to-b from-[#CDDAF8] drop-shadow-lg to-[#E5EEFF] px-44 rounded-2xl space-y-4 md:space-y-6 sm:p-8">
@@ -15,6 +16,7 @@
             </h1>
             <form class="space-y-4 md:space-y-6 px-10" method="post" action="{{ route('downloadPdf') }}">
                 @csrf
+                <!-- input tanggal awal yang mau didownload -->
                 <div class="relative bg-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" class="absolute z-10 bottom-3 left-2" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="green" d="M8.5 14a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m0 3.5a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m4.75-4.75a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0M12 17.5a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m4.75-4.75a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0" />
@@ -26,6 +28,7 @@
                         class="bg-gray-50 border pl-10 border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         required="">
                 </div>
+                <!-- input tanggal akhir yang mau didownload -->
                 <div class="relative bg-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" class="absolute z-10 bottom-3 left-2" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="red" d="M8.5 14a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m0 3.5a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m4.75-4.75a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0M12 17.5a1.25 1.25 0 1 0 0-2.5a1.25 1.25 0 0 0 0 2.5m4.75-4.75a1.25 1.25 0 1 1-2.5 0a1.25 1.25 0 0 1 2.5 0" />
@@ -37,6 +40,7 @@
                         class="bg-gray-50 border pl-10 border-gray-300 text-gray-900 drop-shadow-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         required="">
                 </div>
+                <!-- button konfirmasi -->
                 <button type="submit"
                     class="bg-[#4C7DE7] ml-24 shadow-lg text-white bg-primary-600 drop-shadow-lg hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5">
                     Konfirmasi</button>
