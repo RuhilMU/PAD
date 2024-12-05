@@ -9,9 +9,11 @@
 <!-- tabel barang -->
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-52 my-24">
     <div class="flex items-center justify-between p-2" style="background:#EEF0F4">
+        <!-- button tambah data barang -->
         <div class="col">
             <a href="{{ route('barang.create')}}" class="col p-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
         </div>
+        <!-- button unduh informasi barang -->
         <a href="/barang/unduh">
             <button type="button" class="text-white bg-[#0090F0] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center me-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 me-2" viewBox="0 0 24 24">
@@ -73,6 +75,7 @@
             @endforeach
         </tbody>
     </table>
+    <!-- pagination -->
     <div class="flex justify-between bg-[#E8E8E8]">
         <form method="GET" action="{{ route('barang.index') }}" class="flex items-center mt-1 ml-2">
             <label for="per_page" class="block text-sm font-medium text-gray-700 pr-2">Items per page:</label>

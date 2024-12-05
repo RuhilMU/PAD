@@ -6,18 +6,19 @@
     <title>Home</title>
 </head>
 
-<!-- line chart -->
-
+<!-- line chart harian -->
 <div class="flex items-center justify-center">
     <div style="width: 60%; margin: 3em" class="bg-white m-5 rounded-5 transition-transform duration-300 ease-in-out hover:scale-105">
         <a href="/transaksi"> <canvas id="dailyReportChart"></canvas>
         </a>
     </div>
 </div>
+
 <!-- tabel barang titipan -->
 <div style="width: 60%;" class="relative overflow-x-auto drop-shadow-md sm:rounded-lg mx-auto mt-4 mb-10">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
         <span class="col p-6 items-center" style="color: #161D6F;font-weight:bold; font-size:16px">Monitoring Barang</span>
+        <!-- fungsi searching -->
         <div class="relative mr-5">
             <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                 <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -29,17 +30,17 @@
             </form>
         </div>
     </div>
-            @if (!empty($search))
-                @if (count($consignments) > 0)
-                    <div class="alert alert-success">
-                        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
-                    </div>
-                @else
-                    <div class="alert alert-warning">
-                        <h4>Data {{ $search }} tidak ditemukan</h4>
-                    </div>
-                @endif
-            @endif
+    @if (!empty($search))
+    @if (count($consignments) > 0)
+    <div class="alert alert-success">
+        Ditemukan <strong>{{ count($consignments) }}</strong> Data:
+    </div>
+    @else
+    <div class="alert alert-warning">
+        <h4>Data {{ $search }} tidak ditemukan</h4>
+    </div>
+    @endif
+    @endif
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-white uppercase bg-[#161D6F]">
             <tr>
@@ -54,8 +55,6 @@
                 </th>
             </tr>
         </thead>
-
-        <!-- Ini nanti isi pakai data dummy aja -->
         <tbody>
             @foreach ($consignments as $consignment)
             <tr class="bg-white border-b hover:bg-gray-50">
@@ -75,6 +74,7 @@
 </div>
 
 <script>
+    // logic untuk isi data pada line chart harian
     document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('dailyReportChart').getContext('2d');
         fetch('/dashboard/daily-report')
@@ -84,8 +84,7 @@
                     type: 'line',
                     data: {
                         labels: data.map(row => ` ${row.day}`),
-                        datasets: [
-                            {
+                        datasets: [{
                                 label: 'Masuk',
                                 data: data.map(row => row.masuk),
                                 borderColor: '#20BB14',
@@ -106,11 +105,11 @@
                             }
                         },
                         animation: {
-                            duration: 1000, 
-                            easing: 'easeOutBounce' 
+                            duration: 1000,
+                            easing: 'easeOutBounce'
                         },
                         hover: {
-                            animationDuration: 500 
+                            animationDuration: 500
                         }
                     },
                 });

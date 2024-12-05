@@ -1,17 +1,19 @@
 @extends('layout.laporan')
 @section('title laporan', 'LAPORAN KEUANGAN BULANAN')
 @section('dropdown', 'Bulanan')
+
 <head>
     <title>Bulanan</title>
 </head>
 
+<!-- line chart bulanan -->
 @section('content')
-    <section class="p-20 drop-shadow-lg">
-        <div class="mx-auto"><canvas id="monthlyReportChart"></canvas></div>
-    </section>
-
+<section class="p-20 drop-shadow-lg">
+    <div class="mx-auto"><canvas id="monthlyReportChart"></canvas></div>
+</section>
 
 <script>
+    // logic untuk isi data pada line chart bulanan
     document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('monthlyReportChart').getContext('2d');
         fetch('/bulanan/monthly-report')
@@ -21,8 +23,7 @@
                     type: 'line',
                     data: {
                         labels: data_bulanan.map(row => `${row.month}`),
-                        datasets: [
-                            {
+                        datasets: [{
                                 label: 'Masuk',
                                 data: data_bulanan.map(row => row.masuk),
                                 borderColor: '#20BB14',

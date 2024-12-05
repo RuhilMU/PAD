@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'alganis@admin.com',
-            'password' => Hash::make('admin12345'), 
+            'password' => Hash::make('admin12345'),
             'role' => 'owner',
-]);
+        ]);
     }
 }
