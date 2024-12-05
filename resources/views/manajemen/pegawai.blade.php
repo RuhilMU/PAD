@@ -26,7 +26,7 @@
             @if (!empty($cari))
             @if (count($data_user))
             <div class="alert alert-success">
-                Ditemukan <strong>{{ count($data_user) }}</strong> user dengan kata: <h4>{{ $cari }}</h4>
+                Ditemukan <strong>{{ count($data_user) }}</strong> user dengan nama: <h4>{{ $cari }}</h4>
             </div>
             @else
             <div class="alert alert-warning">

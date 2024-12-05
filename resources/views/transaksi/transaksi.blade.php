@@ -180,20 +180,13 @@
             .catch(error => console.error('Error loading data:', error));
     });
 </script>
+
 <script>
     function confirmDelete() {
         const confirmed = confirm('Delete this data?');
         if (!confirmed) return false;
 
         console.log('Delete confirmed. Submitting form.');
-        return true;
-    }
-
-    function confirmUpdate() {
-        const confirmed = confirm('Update this data?');
-        if (!confirmed) return false;
-
-        console.log('Update confirmed. Submitting form.');
         return true;
     }
 </script>
