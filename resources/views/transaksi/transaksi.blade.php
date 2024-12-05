@@ -46,6 +46,9 @@
                         Sold
                     </th>
                     <th scope="col" class="px-3 py-3">
+                        Total Price
+                    </th>                    
+                    <th scope="col" class="px-3 py-3">
                     </th>
                 </tr>
             </thead>
@@ -80,6 +83,9 @@
                     </td>
                     <td class="px-3 py-1">
                         {{ $consignment['sold'] }}
+                    </td>
+                    <td class="px-3 py-1">
+                        {{ 'Rp ' . number_format($consignment['total_price']  , 2, ',', '.') }}
                     </td>
                     <td class="flex items-center px-3 py-1 justify-end">
                         <a href="{{ route('laporan.edit', $consignment['consignment_id']) }}" class="bg-white border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
