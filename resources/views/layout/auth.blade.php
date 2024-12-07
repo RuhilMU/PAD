@@ -9,14 +9,13 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-
+<!-- navbar -->
 <nav class="bg-gradient-to-r from-[#161D6F] to-[#4854EB]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse mr-auto">
             <img src="{{ asset('src/Logo.png') }}" class="h-8" alt="Flowbite Logo" />
             <span class="text-white self-center text-2xl font-semibold whitespace-nowrap">Web Pengelola Keuangan</span>
         </a>
-
     </div>
 </nav>
 

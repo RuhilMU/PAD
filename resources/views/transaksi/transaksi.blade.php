@@ -53,7 +53,6 @@
                 </tr>
             </thead>
 
-            {{-- Ini nanti isi pakai data dummy aja --}}
             <tbody>
                 @foreach ($consignments as $consignment)
                 <tr class="bg-[#E3ECFF] border-b">
@@ -110,6 +109,7 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- pagination -->
         <div class="flex justify-between">
             <form method="GET" action="{{ route('laporan.index') }}" class="flex items-center mt-1 ml-2">
                 <label for="per_page" class="block text-sm font-medium text-gray-700 pr-2">Items per page:</label>
@@ -134,8 +134,6 @@
         </div>
     </div>
 </section>
-
-
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
