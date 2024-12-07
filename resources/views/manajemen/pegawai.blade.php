@@ -8,9 +8,11 @@
 @section('content')
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-28 my-10">
     <div class="flex items-center justify-between" style="background:#EEF0F4">
+        <!-- tambah pegawai -->
         <div class="col">
             <a href="{{ route('pegawai.create')}}" class="col pl-3 items-center text-blue-600 hover:underline" style="font-weight:bold; font-size:13px">Tambah</a>
         </div>
+        <!-- search pegawai -->
         <div class="relative">
             <form action="{{ route('pegawai.search') }}" method="GET">
                 <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
@@ -64,7 +66,6 @@
                 <td class="px-3 py-1">
                     ********
                 </td>
-
                 <td class="flex items-center px-3 py-1 justify-end">
                     <a href="{{ route('pegawai.edit', $user->user_id) }}" class="border-2 border-[#A3A3A3] rounded p-1 hover:bg-green-100 mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -88,6 +89,7 @@
             @endforeach
         </tbody>
     </table>
+    <!-- pagination -->
     <div class="flex justify-between bg-[#E8E8E8]">
         <form method="GET" action="{{ route('pegawai.index') }}" class="flex items-center mt-1 ml-2">
             <label for="per_page" class="block text-sm font-medium text-gray-700 pr-2">Items per page:</label>

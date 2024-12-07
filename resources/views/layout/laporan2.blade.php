@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-
+<!-- navbar -->
 <nav class="bg-gradient-to-r from-[#161D6F] to-[#4854EB] max-w-screen flex flex-row flex-wrap items-center justify-between p-2">
     <div class="flex">
         <a href="/dashboard" class="block items-center space-x-3 rtl:space-x-reverse mr-auto">
